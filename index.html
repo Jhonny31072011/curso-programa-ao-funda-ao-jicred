@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,18 +10,19 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
-body{background:#0f0f0f;color:#fff;scroll-behavior:smooth;}
+body{background:#0f0f0f;color:#fff;scroll-behavior:smooth;padding-top:70px;}
 
 /* NAVBAR */
 nav{
 position:fixed;
 top:0;
+left:0;
 width:100%;
 padding:15px 10%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(0,0,0,0.7);
+background:rgba(0,0,0,0.8);
 backdrop-filter:blur(10px);
 z-index:1000;
 }
@@ -33,12 +33,15 @@ color:#fff;
 margin-left:20px;
 text-decoration:none;
 font-size:14px;
+transition: 0.3s;
 }
+
+nav a:hover{color:#f5a623;}
 
 /* HERO */
 .hero{
-height:100vh;
-background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover;
+height:calc(100vh - 70px);
+background:url('https://unsplash.com') center/cover no-repeat;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -46,15 +49,17 @@ text-align:center;
 }
 
 .overlay{
-background:rgba(0,0,0,0.7);
+background:rgba(0,0,0,0.75);
 padding:40px;
 border-radius:10px;
 animation:fadeIn 2s;
+max-width: 600px;
+width: 90%;
 }
 
-.hero h1{font-size:3rem;margin-bottom:10px;}
+.hero h1{font-size:3rem;margin-bottom:10px;line-height:1.2;}
 .hero span{color:#f5a623;}
-.hero p{opacity:0.8;}
+.hero p{opacity:0.8;margin-bottom:10px;}
 
 .btn{
 margin-top:20px;
@@ -64,15 +69,15 @@ background:#f5a623;
 color:#000;
 border-radius:30px;
 text-decoration:none;
+font-weight:600;
 transition:0.3s;
 }
 
-.btn:hover{transform:scale(1.05);}
+.btn:hover{transform:scale(1.05);background:#e09312;}
 
 /* SECTIONS */
 section{padding:80px 10%;text-align:center;}
-
-h2{margin-bottom:40px;font-size:2rem;}
+h2{margin-bottom:40px;font-size:2rem;position:relative;}
 
 /* SERVIÇOS */
 .services{
@@ -95,8 +100,10 @@ box-shadow:0 10px 25px rgba(245,166,35,0.3);
 
 .card img{
 width:100%;
+height:200px;
+object-fit:cover;
 border-radius:10px;
-margin-bottom:10px;
+margin-bottom:15px;
 }
 
 /* PORTFÓLIO */
@@ -108,6 +115,8 @@ gap:15px;
 
 .portfolio img{
 width:100%;
+height:250px;
+object-fit:cover;
 border-radius:10px;
 transition:0.3s;
 }
@@ -122,6 +131,7 @@ background:#f5a623;
 color:#000;
 padding:60px 20px;
 border-radius:10px;
+margin: 0 10%;
 }
 
 .cta h2{margin-bottom:20px;}
@@ -131,6 +141,9 @@ footer{
 padding:30px;
 background:#000;
 margin-top:50px;
+text-align:center;
+font-size:14px;
+opacity:0.7;
 }
 
 /* WHATS */
@@ -141,15 +154,35 @@ right:20px;
 background:#25D366;
 padding:15px;
 border-radius:50%;
-font-size:20px;
+font-size:24px;
 text-decoration:none;
 color:#fff;
+z-index:2000;
+box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+transition: 0.3s;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 60px;
+height: 60px;
 }
+
+.whatsapp:hover{transform:scale(1.1);}
 
 /* ANIMAÇÃO */
 @keyframes fadeIn{
 from{opacity:0;transform:translateY(20px);}
 to{opacity:1;transform:translateY(0);}
+}
+
+/* RESPONSIVIDADE CELULAR */
+@media(max-width:768px){
+nav{padding:15px 5%;flex-direction:column;gap:10px;}
+nav a{margin:0 10px;}
+.hero h1{font-size:2rem;}
+section{padding:60px 5%;}
+.cta{margin:0 5%;}
+body{padding-top:100px;}
 }
 </style>
 </head>
@@ -178,17 +211,18 @@ to{opacity:1;transform:translateY(0);}
 <h2>Serviços</h2>
 <div class="services">
 <div class="card">
-<img src="https://unsplash.com" alt="Piso Vinílico Amadeirado" width="400">
+<!-- Link do Piso Vinílico Corrigido para carregar na web -->
+<img src="https://unsplash.com" alt="Piso Vinílico">
 <h3>Pisos Vinílicos</h3>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c">
+<img src="https://unsplash.com" alt="Porcelanato">
 <h3>Porcelanatos</h3>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e">
+<img src="https://unsplash.com" alt="Reformas">
 <h3>Reformas</h3>
 </div>
 </div>
@@ -196,31 +230,32 @@ to{opacity:1;transform:translateY(0);}
 
 <section>
 <h2>Sobre Nós</h2>
-<p>
+<p style="max-width:800px; margin:0 auto; line-height:1.8; opacity:0.9;">
 Especialistas em acabamentos em Ji-Paraná/RO, entregando excelência,
-durabilidade e estética moderna para cada projeto.Executando projetos e realizando sonhos.
+durabilidade e estética moderna para cada projeto. Executando projetos e realizando sonhos.
 </p>
 </section>
 
 <section id="portfolio">
 <h2>Projetos</h2>
 <div class="portfolio">
-<img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154">
-<img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e">
-<img src="https://images.unsplash.com/photo-1600210492493-0946911123ea">
+<img src="https://unsplash.com" alt="Projeto 1">
+<img src="https://unsplash.com" alt="Projeto 2">
+<img src="https://unsplash.com" alt="Projeto 3">
 </div>
 </section>
 
 <section class="cta" id="contato">
 <h2>Solicite seu orçamento agora</h2>
-<a href="https://wa.me/55 69 999444533" class="btn">Falar no WhatsApp</a>
+<a href="https://wa.me/5569999444533" class="btn">Falar no WhatsApp</a>
 </section>
 
 <footer>
 <p>© 2026 L.N. Macedo Acabamentos</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/5599999999999">💬</a>
+<!-- Link do Botão Flutuante corrigido com o seu número correto -->
+<a class="whatsapp" href="https://wa.me/5569999444533" target="_blank" title="Falar no WhatsApp">💬</a>
 
 </body>
 </html>
