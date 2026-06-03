@@ -3,116 +3,672 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Estúdio de Animação Selvagem - Galeria</title>
+    <title>LN Macedo Acabamentos | Ji-Paraná - RO</title>
+    <style>
+      /* --- VARIÁVEIS DE DESIGN (PRETO E LARANJA) --- */
+      :root {
+        --primary: #000000; /* Preto */
+        --secondary: #f97316; /* Laranja */
+        --bg-light: #f9fafb; /* Cinza bem claro */
+        --bg-white: #ffffff; /* Branco */
+        --text-dark: #111827; /* Cinza Escuro para texto */
+        --text-muted: #4b5563; /* Texto secundário */
+        --border-color: #e5e7eb; /* Bordas */
+        --radius-md: 12px;
+        --radius-lg: 20px;
+        --transition: all 0.3s ease;
+      }
+
+      /* --- CONFIGURAÇÕES RESET --- */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+        padding-top: 90px; /* Evita que o menu fixo cubra o conteúdo */
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section-padding {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: var(--primary);
+        font-weight: 800;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        color: var(--text-muted);
+        margin-bottom: 50px;
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* --- HEADER / MENU FIXO --- */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-white);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        height: 90px;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+      }
+
+      .logo {
+        font-size: 1.7rem;
+        font-weight: 900;
+        color: var(--primary);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+      }
+
+      .logo span {
+        color: var(--secondary);
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+      }
+
+      .nav-link {
+        font-weight: 600;
+        color: var(--text-dark);
+        text-decoration: none;
+        transition: var(--transition);
+        font-size: 1rem;
+      }
+
+      .nav-link:hover {
+        color: var(--secondary);
+      }
+
+      .btn-adm-trigger {
+        background-color: var(--primary);
+        color: #ffffff;
+        border: 2px solid var(--secondary);
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .btn-adm-trigger:hover {
+        background-color: var(--secondary);
+        color: var(--primary);
+      }
+
+      /* --- HERO BANNER --- */
+      .hero {
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)),
+          url("https://unsplash.com") no-repeat center center/cover;
+        color: #ffffff;
+        text-align: center;
+        padding: 100px 0;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 900;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        max-width: 800px;
+        margin: 0 auto;
+        color: #e5e7eb;
+      }
+
+      /* --- SEÇÃO HISTÓRIA --- */
+      .history-block {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      @media (max-width: 768px) {
+        .history-block {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .history-img-box {
+        position: relative;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+      }
+
+      .history-img-box img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .history-text h3 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: var(--primary);
+      }
+
+      .history-text p {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+      }
+
+      /* --- CATÁLOGO DE PRODUTOS --- */
+      .catalog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .catalog-card {
+        background: var(--bg-white);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+        border: 1px solid var(--border-color);
+      }
+
+      .catalog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        border-color: var(--secondary);
+      }
+
+      .catalog-img-wrapper {
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .catalog-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .catalog-info {
+        padding: 25px;
+      }
+
+      .catalog-info h3 {
+        font-size: 1.3rem;
+        color: var(--primary);
+        margin-bottom: 10px;
+      }
+
+      .catalog-info p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      /* --- CALCULADORA DE MATERIAIS --- */
+      .calc-container {
+        background: var(--bg-white);
+        border-radius: var(--radius-lg);
+        padding: 40px;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        max-width: 900px;
+        margin: 0 auto;
+        border-top: 4px solid var(--secondary);
+      }
+
+      .calc-inputs {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .input-group label {
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--primary);
+      }
+
+      .input-group input,
+      .input-group select {
+        padding: 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        background-color: var(--bg-light);
+        font-size: 1rem;
+        color: var(--text-dark);
+        outline: none;
+        width: 100%;
+      }
+
+      .btn-calc {
+        background-color: var(--secondary);
+        color: #ffffff;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        transition: var(--transition);
+      }
+
+      .btn-calc:hover {
+        background-color: #ea580c;
+        transform: translateY(-2px);
+      }
+
+      .calc-screen {
+        background-color: #111827;
+        color: #10b981;
+        padding: 25px;
+        border-radius: var(--radius-md);
+        margin-top: 30px;
+        font-family: monospace;
+        border-left: 5px solid var(--secondary);
+      }
+
+      .screen-line {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+
+      .screen-line.total {
+        border-top: 1px dashed #374151;
+        padding-top: 10px;
+        font-size: 1.5rem;
+        color: var(--secondary);
+        font-weight: bold;
+      }
+
+      /* --- GALERIA DE OBRAS --- */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .gallery-item {
+        background: var(--bg-white);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border-color);
+      }
+
+      .gallery-frame {
+        height: 260px;
+        overflow: hidden;
+      }
+
+      .gallery-frame img,
+      .gallery-frame video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .gallery-desc {
+        padding: 20px;
+      }
+
+      .gallery-desc h4 {
+        font-size: 1.25rem;
+        color: var(--primary);
+        margin-bottom: 8px;
+      }
+
+      .gallery-desc p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+
+      /* --- CONTROL PANEL (ADMIN) --- */
+      .admin-panel {
+        background-color: #0f172a;
+        color: #ffffff;
+        padding: 60px 0;
+        border-top: 6px solid var(--secondary);
+      }
+
+      .admin-panel h2 {
+        color: var(--secondary);
+        font-weight: 800;
+      }
+      .admin-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        margin-top: 30px;
+      }
+
+      .admin-card {
+        background: #1e293b;
+        padding: 30px;
+        border-radius: var(--radius-md);
+        border: 1px solid #334155;
+      }
+
+      .admin-card h3 {
+        color: var(--secondary);
+        margin-bottom: 20px;
+        border-bottom: 1px solid #334155;
+        padding-bottom: 10px;
+      }
+
+      .admin-card label {
+        display: block;
+        margin-top: 15px;
+        font-size: 0.9rem;
+        color: #94a3b8;
+      }
+
+      .admin-card input,
+      .admin-card select,
+      .admin-card textarea {
+        background: #0f172a;
+        border: 1px solid #334155;
+        color: #ffffff;
+        padding: 10px;
+        border-radius: 6px;
+        margin-top: 5px;
+        width: 100%;
+      }
+
+      .btn-admin-save {
+        background-color: var(--secondary);
+        color: #ffffff;
+        border: none;
+        padding: 12px;
+        font-weight: 700;
+        border-radius: 6px;
+        width: 100%;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .btn-admin-save:hover {
+        background-color: #ea580c;
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        background-color: var(--primary);
+        color: #ffffff;
+        text-align: center;
+        padding: 30px 0;
+        margin-top: 60px;
+      }
+    </style>
   </head>
   <body>
+    <!-- --- HEADER / MENU FIXO --- -->
     <header>
-      <h1>Estúdio de Animação Selvagem</h1>
-      <p>Bem-vindo à nossa galeria oficial de personagens animados!</p>
+      <div class="container nav-container">
+        <a href="#" class="logo">LN <span>Macedo</span> Acabamentos</a>
+        <nav class="nav-menu">
+          <a href="#historia" class="nav-link">Nossa História</a>
+          <a href="#catalogo" class="nav-link">Catálogo</a>
+          <a href="#calculadora" class="nav-link">Calculadora</a>
+          <a href="#galeria" class="nav-link">Obras</a>
+          <button class="btn-adm-trigger" onclick="toggleAdminPanel()">
+            Painel ADM
+          </button>
+        </nav>
+      </div>
     </header>
 
-    <main>
-      <h2>Nossos Personagens em Destaque</h2>
+    <!-- --- HERO BANNER --- -->
+    <section class="hero">
+      <div class="container">
+        <h1>Excelência em Cada Detalhe</h1>
+        <p>
+          Sua obra merece o mais alto padrão de acabamento e precisão geométrica
+          em Ji-Paraná e região.
+        </p>
+      </div>
+    </section>
 
-      <ul>
-        <li>
-          <h3>Leão</h3>
+    <!-- --- SEÇÃO HISTÓRIA EXPLICATIVA --- -->
+    <section id="historia" class="container section-padding">
+      <div class="history-block">
+        <div class="history-img-box">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg/330px-020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg"
-            alt="Animação de um leão caminhando!"
-            width="300"
+            src="https://unsplash.com"
+            alt="Profissional conferindo nivelamento perfeito na obra"
           />
+        </div>
+        <div class="history-text">
+          <h3>Nossa Trajetória de Dedicação</h3>
           <p>
-            O rei da selva em uma animação de caminhada majestosa e rugido
-            potente!.
+            A LN Macedo Acabamentos nasceu com a missão de transformar o
+            conceito de revestimento e finalização em Ji-Paraná. Entendemos que
+            o acabamento não é apenas a última etapa de uma construção, mas sim
+            a concretização de um sonho familiar ou empresarial.
           </p>
-          <a
-            href="https://www.youtube.com/results?search_query=animation+lion"
-            target="_blank"
-            >Assista à Animação</a
-          >
-        </li>
-
-        <li>
-          <h3>Pinguim</h3>
-          <img
-            src="https://static.todamateria.com.br/upload/pi/ng/pinguimimperador-cke.jpg"
-            alt="Animação de um pinguim escorregando no gelo"
-            width="300"
-          />
           <p>
-            Uma animação divertida do Pingo escorregando de barriga no gelo e
-            mergulhando!.
+            Nossa história é pautada pelo respeito aos investimentos de nossos
+            clientes, buscando constantemente novas tecnologias de nivelamento,
+            cortes em meia-esquadria e assentamento de grandes formatos para
+            entregar superfícies milimetricamente perfeitas.
           </p>
-          <a
-            href="https://www.youtube.com/results?search_query=animation+penguin"
-            target="_blank"
-            >Assista à Animação</a
-          >
-        </li>
+        </div>
+      </div>
+    </section>
 
-        <li>
-          <h3>Elefante</h3>
-          <img
-            src="https://www.infoescola.com/wp-content/uploads/2010/06/elefante-africano-235722367.jpg"
-            alt="Animação de um elefante usando a tromba!"
-            width="300"
-          />
-          <p>
-            Trombinha demonstra sua força ao levantar troncos e jogar água com
-            sua tromba!.
-          </p>
-          <a
-            href="https://www.youtube.com/results?search_query=animation+elephant"
-            target="_blank"
-            >Assista à Animação</a
-          >
-        </li>
-
-        <li>
-          <h3>Canguru</h3>
-          <img
-            src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/F3CB/production/_104711426_rogerkangaroo2.jpg.webp"
-            alt="Animação de um canguru saltando!"
-            width="300"
-          />
-          <p>
-            Uma animação de ciclo de salto contínuo, mostrando a agilidade do
-            Saltador!.
-          </p>
-          <a
-            href="https://www.youtube.com/results?search_query=animation+kangaroo"
-            target="_blank"
-            >Assista à Animação</a
-          >
-        </li>
-
-        <li>
-          <h3>Golfinho</h3>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtD5lNy3CEBRG_0VhoAR4ocTGBDVYbSCYZdIX_xxY9QP4WfIDDe0p3vxnoZTfdqrVvyLye9olIXJ5-i0pkl2sbTKBKeJJvhawlvoMxag&s=10"
-            alt="Animação de um golfinho saltando na água"
-            width="300"
-          />
-          <p>
-            Fliper realiza saltos acrobáticos para fora da água nesta animação
-            fluida.
-          </p>
-          <a
-            href="https://www.youtube.com/results?search_query=animation+dolphin"
-            target="_blank"
-            >Assista à Animação</a
-          >
-        </li>
-      </ul>
-    </main>
-
-    <footer>
-      <p>2023 Estúdio de Animação Selvagem. Todos os direitos reservados.</p>
-      <p>
-        Dúvidas?
-        <a href="mailto:contato@estudioselvagem.com">Entre em contato</a>.
+    <!-- --- CATÁLOGO DE PRODUTOS --- -->
+    <section id="catalogo" class="container section-padding">
+      <h2 class="section-title">Nosso Catálogo de Soluções</h2>
+      <p class="section-subtitle">
+        Conheça as tipologias de materiais e estruturas que trabalhamos
+        diariamente com excelência.
       </p>
-    </footer>
+
+      <div class="catalog-grid">
+        <div class="catalog-card">
+          <div class="catalog-img-wrapper">
+            <img
+              src="https://unsplash.com"
+              alt="Porcelanato em grandes formatos instalado"
+            />
+          </div>
+          <div class="catalog-info">
+            <h3>Grandes Formatos e Porcelanatos</h3>
+            <p>
+              Assentamento de peças nobres com juntas mínimas ou secas,
+              utilizando sistemas de nivelamento por tração.
+            </p>
+          </div>
+        </div>
+
+        <div class="catalog-card">
+          <div class="catalog-img-wrapper">
+            <img
+              src="https://unsplash.com"
+              alt="Revestimento volumétrico 3D texturizado"
+            />
+          </div>
+          <div class="catalog-info">
+            <h3>Revestimentos Cerâmicos e 3D</h3>
+            <p>
+              Criação de paredes e painéis decorativos com efeitos
+              tridimensionais alinhados de forma contínua.
+            </p>
+          </div>
+        </div>
+
+        <div class="catalog-card">
+          <div class="catalog-img-wrapper">
+            <img
+              src="https://unsplash.com"
+              alt="Pastilhas aplicadas em banheiros e piscinas"
+            />
+          </div>
+          <div class="catalog-info">
+            <h3>Pastilhas e Detalhes Finos</h3>
+            <p>
+              Paginação detalhada de pastilhas de vidro e cerâmicas para áreas
+              gourmet, piscinas e nichos estruturados.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- CALCULADORA DE MATERIAIS MELHORADA --- -->
+    <section id="calculadora" class="container section-padding">
+      <h2 class="section-title">Calculadora de Precisão</h2>
+      <p class="section-subtitle">
+        Calcule o volume e o investimento estimado para os principais insumos da
+        sua obra.
+      </p>
+
+      <div class="calc-container">
+        <div class="calc-inputs">
+          <div class="input-group">
+            <label for="calc-categoria">Categoria do Trabalho</label>
+            <select id="calc-categoria" onchange="ajustarCalculadoraLayout()">
+              <option value="porcelanato">Porcelanato Nobre (m²)</option>
+              <option value="azulejo">Revestimento de Parede (m²)</option>
+              <option value="pastilha">Mosaicos e Pastilhas (m²)</option>
+              <option value="argamassa">
+                Argamassa de Alta Performance (Sacos)
+              </option>
+              <option value="rejunte">Rejunte Acabamento Fino (kg)</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label id="lbl-v1" for="calc-v1">Largura do Ambiente (m)</label>
+            <input type="number" id="calc-v1" value="4.0" step="0.1" />
+          </div>
+          <div class="input-group" id="box-v2">
+            <label id="lbl-v2" for="calc-v2">Comprimento do Ambiente (m)</label>
+            <input type="number" id="calc-v2" value="5.0" step="0.1" />
+          </div>
+          <div class="input-group">
+            <label for="calc-quebra">Margem de Recorte (Quebras)</label>
+            <select id="calc-quebra">
+              <option value="1.10">10% (Recomendado)</option>
+              <option value="1.15">15% (Paginação Diagonal)</option>
+              <option value="1.05">5% (Ambiente Reto)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn-calc" onclick="processarCalculoInsumos()">
+          Processar Dados da Obra
+        </button>
+
+        <div class="calc-screen">
+          <div class="screen-line">
+            <span>Área Líquida Dimensionada:</span>
+            <strong id="scr-area">0.00 m²</strong>
+          </div>
+          <div class="screen-line">
+            <span>Necessidade de Insumo (Lote):</span>
+            <strong id="scr-quantidade">0 Unidades</strong>
+          </div>
+          <div class="screen-line">
+            <span>Estimativa de Custo de Distribuição:</span>
+            <strong id="scr-custo" style="color: #34d399">R$ 0,00</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- GALERIA DE OBRAS --- -->
+    <section id="galeria" class="container section-padding">
+      <h2 class="section-title">Portfólio de Obras</h2>
+      <p class="section-subtitle">
+        Exemplos reais acompanhados por detalhes técnicos inseridos pelo
+        construtor.
+      </p>
+
+      <div class="gallery-grid" id="main-gallery-render">
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <img
+              src="https://unsplash.com"
+              alt="Porcelanato em Sala de Estar"
+            />
+          </div>
+          <div class="gallery-info">
+            <h4>Condomínio Ecoville</h4>
+            <p>
+              Assentamento de grandes formatos acetinados com paginação contínua
+              partindo do eixo central da residência.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- PAINEL DO ADMINISTRADOR --- -->
+    <section id="admin-panel" class="admin-panel" style="display: none">
+      <div class="container">
+        <h2>Painel Exclusivo do Administrador</h2>
+        <div class="admin-container">
+          <!-- Bloco Preços -->
+          <div class="admin-card">
+            <h3>Manipular Preços de Materiais</h3>
+
+            <label for="adm-p-porcelanato"
+              >Porcelanato Nobre (R$ por m²):</label
+            >
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
