@@ -3,633 +3,116 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      LN Macedo Acabamentos | Materiais de Construção em Ji-Paraná - RO
-    </title>
-    <style>
-      /* --- VARIÁVEIS DE CORES E CONFIGURAÇÕES CORES PADRÃO (LIGHT MODE) --- */
-      :root {
-        --primary: #1e3a5f; /* Azul Escuro */
-        --secondary: #f97316; /* Laranja */
-        --bg-light: #f5f5f5; /* Cinza Claro */
-        --bg-white: #ffffff; /* Branco */
-        --text-dark: #1f2937; /* Cinza Escuro para texto */
-        --text-muted: #4b5563; /* Texto secundário */
-        --border-color: #e5e7eb; /* Bordas */
-        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-        --shadow-md:
-          0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        --shadow-lg:
-          0 10px 15px -3px rgba(0, 0, 0, 0.1),
-          0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        --radius-sm: 6px;
-        --radius-md: 12px;
-        --radius-lg: 20px;
-        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      /* --- CONFIGURAÇÕES DARK MODE --- */
-      body.dark-mode {
-        --primary: #3b82f6; /* Azul mais claro para contraste */
-        --secondary: #fb923c; /* Laranja mais claro */
-        --bg-light: #111827; /* Fundo escuro */
-        --bg-white: #1f2937; /* Cards escuros */
-        --text-dark: #f9fafb; /* Texto claro */
-        --text-muted: #9ca3af; /* Texto secundário claro */
-        --border-color: #374151; /* Bordas escuras */
-        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-      }
-
-      /* --- RESET E ESTILOS GERAIS --- */
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        scroll-behavior: smooth;
-      }
-
-      body {
-        font-family:
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          Roboto,
-          Helvetica,
-          Arial,
-          sans-serif;
-        background-color: var(--bg-light);
-        color: var(--text-dark);
-        line-height: 1.6;
-        overflow-x: hidden;
-        transition: var(--transition);
-      }
-
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      ul {
-        list-style: none;
-      }
-
-      img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      input,
-      textarea,
-      select {
-        font-family: inherit;
-        font-size: 1rem;
-      }
-
-      .container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      .section-title {
-        text-align: center;
-        font-size: 2.25rem;
-        margin-bottom: 10px;
-        color: var(--primary);
-        font-weight: 700;
-      }
-
-      .section-subtitle {
-        text-align: center;
-        color: var(--text-muted);
-        margin-bottom: 50px;
-        font-size: 1.1rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .section-padding {
-        padding: 80px 0;
-      }
-
-      /* --- BOTÕES --- */
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 12px 28px;
-        font-weight: 600;
-        border-radius: var(--radius-md);
-        transition: var(--transition);
-        cursor: pointer;
-        border: none;
-        gap: 8px;
-      }
-
-      .btn-primary {
-        background-color: #1e3a5f;
-        color: #ffffff;
-      }
-
-      .btn-primary:hover {
-        background-color: #162a45;
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-      }
-
-      .btn-secondary {
-        background-color: var(--secondary);
-        color: #ffffff;
-      }
-
-      .btn-secondary:hover {
-        background-color: #ea580c;
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-      }
-
-      .btn-outline {
-        background-color: transparent;
-        border: 2px solid var(--primary);
-        color: var(--primary);
-      }
-
-      .btn-outline:hover {
-        background-color: var(--primary);
-        color: #ffffff;
-        transform: translateY(-2px);
-      }
-
-      /* --- 1. HEADER & COMPONENTES NAV --- */
-      header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: var(--bg-white);
-        box-shadow: var(--shadow-sm);
-        z-index: 1000;
-        transition: var(--transition);
-      }
-
-      .nav-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 80px;
-      }
-
-      .logo {
-        font-size: 1.4rem;
-        font-weight: 800;
-        color: #1e3a5f;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-
-      body.dark-mode .logo {
-        color: #ffffff;
-      }
-
-      .logo span {
-        color: var(--secondary);
-      }
-
-      .nav-menu {
-        display: flex;
-        gap: 30px;
-        align-items: center;
-      }
-
-      .nav-link {
-        font-weight: 500;
-        color: var(--text-dark);
-        position: relative;
-        padding: 5px 0;
-        transition: var(--transition);
-      }
-
-      .nav-link:hover {
-        color: var(--secondary);
-      }
-
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: var(--secondary);
-        transition: var(--transition);
-      }
-
-      .nav-link:hover::after {
-        width: 100%;
-      }
-
-      .nav-actions {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-
-      /* Dark Mode Toggle Button */
-      .theme-toggle {
-        background: none;
-        border: none;
-        cursor: pointer;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--bg-light);
-        color: var(--text-dark);
-        transition: var(--transition);
-      }
-
-      .theme-toggle:hover {
-        background-color: var(--border-color);
-      }
-
-      .theme-toggle svg {
-        width: 20px;
-        height: 20px;
-        fill: currentColor;
-      }
-
-      .sun-icon {
-        display: block;
-      }
-      .moon-icon {
-        display: none;
-      }
-
-      body.dark-mode .sun-icon {
-        display: none;
-      }
-      body.dark-mode .moon-icon {
-        display: block;
-      } /* Corrigido aqui */
-
-      .hamburger {
-        display: none;
-        flex-direction: column;
-        gap: 6px;
-        border: none;
-        background: none;
-        cursor: pointer;
-        padding: 4px;
-      }
-
-      .hamburger span {
-        display: block;
-        width: 28px;
-        height: 3px;
-        background-color: var(--text-dark);
-      }
-    </style>
+    <title>Estúdio de Animação Selvagem - Galeria</title>
   </head>
   <body>
-    <!-- Seu HTML original continua a partir daqui -->
-    <!-- --- 1. HEADER (MENU DE NAVEGAÇÃO) --- -->
     <header>
-      <div class="container nav-container">
-        <a href="#" class="logo">LN <span>Macedo</span> Acabamentos</a>
-        <nav class="nav-menu">
-          <a href="#servicos" class="nav-link">Serviços</a>
-          <a href="#calculadora" class="nav-link">Calculadora</a>
-          <a href="#galeria" class="nav-link">Obras</a>
-          <a href="#contato" class="nav-link">Contato</a>
-        </nav>
-        <div class="nav-actions">
-          <button
-            class="theme-toggle"
-            onclick="document.body.classList.toggle('dark-mode')"
-            aria-label="Mudar tema"
-          >
-            <span class="sun-icon">☀️</span>
-            <span class="moon-icon">🌙</span>
-          </button>
-          <button class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-      </div>
+      <h1>Estúdio de Animação Selvagem</h1>
+      <p>Bem-vindo à nossa galeria oficial de personagens animados!</p>
     </header>
 
-    <!-- --- 2. BANNER PRINCIPAL (HERO) --- -->
-    <section
-      class="section-padding"
-      style="
-        background:
-          linear-gradient(rgba(30, 58, 95, 0.9), rgba(0, 0, 0, 0.8)),
-          url(&quot;https://unsplash.com&quot;) no-repeat center center/cover;
-        color: #ffffff;
-        text-align: center;
-        padding: 120px 0 80px 0;
-      "
-    >
-      <div class="container">
-        <h1 style="font-size: 3rem; margin-bottom: 20px; font-weight: 800">
-          Especialista em Acabamentos e Revestimentos
-        </h1>
-        <p
-          style="
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px auto;
-            color: #e5e7eb;
-          "
-        >
-          Transforme sua construção com a excelência da LN Macedo. Atendemos
-          Ji-Paraná e toda a região de Rondônia com mão de obra qualificada e
-          precisão.
-        </p>
-        <div
-          style="
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-          "
-        >
-          <a href="#contato" class="btn btn-secondary">Solicitar Orçamento</a>
+    <main>
+      <h2>Nossos Personagens em Destaque</h2>
+
+      <ul>
+        <li>
+          <h3>Leão</h3>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg/330px-020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg"
+            alt="Animação de um leão caminhando"
+            width="300"
+          />
+          <p>
+            O rei da selva em uma animação de caminhada majestosa e rugido
+            potente.
+          </p>
           <a
-            href="#calculadora"
-            class="btn btn-outline"
-            style="border-color: #ffffff; color: #ffffff"
-            >Calcular Materiais</a
+            href="https://www.youtube.com/results?search_query=animation+lion"
+            target="_blank"
+            >Assista à Animação</a
           >
-        </div>
-      </div>
-    </section>
+        </li>
 
-    <!-- --- 3. SEÇÃO DE SERVIÇOS --- -->
-    <section id="servicos" class="container section-padding">
-      <h2 class="section-title">Nossos Serviços</h2>
-      <p class="section-subtitle">
-        Trabalhamos com os melhores materiais do mercado para garantir
-        durabilidade e beleza ao seu ambiente.
-      </p>
-
-      <div
-        style="
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 30px;
-        "
-      >
-        <!-- Card 1 -->
-        <div
-          style="
-            background: var(--bg-white);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-md);
-            overflow: hidden;
-            padding: 25px;
-            border-top: 4px solid var(--primary);
-          "
-        >
-          <h3 style="margin-bottom: 15px; color: var(--primary)">
-            Assentamento de Porcelanato
-          </h3>
-          <p style="color: var(--text-muted); font-size: 0.95rem">
-            Aplicação de pisos e revestimentos em grandes formatos com
-            nivelamento perfeito e juntas secas.
+        <li>
+          <h3>Pinguim</h3>
+          <img
+            src="https://static.todamateria.com.br/upload/pi/ng/pinguimimperador-cke.jpg"
+            alt="Animação de um pinguim escorregando no gelo"
+            width="300"
+          />
+          <p>
+            Uma animação divertida do Pingo escorregando de barriga no gelo e
+            mergulhando.
           </p>
-        </div>
-        <!-- Card 2 -->
-        <div
-          style="
-            background: var(--bg-white);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-md);
-            overflow: hidden;
-            padding: 25px;
-            border-top: 4px solid var(--secondary);
-          "
-        >
-          <h3 style="margin-bottom: 15px; color: var(--primary)">
-            Revestimentos Especiais
-          </h3>
-          <p style="color: var(--text-muted); font-size: 0.95rem">
-            Instalação de pastilhas, azulejos decorativos, filetes e pedras
-            naturais para cozinhas e banheiros.
-          </p>
-        </div>
-        <!-- Card 3 -->
-        <div
-          style="
-            background: var(--bg-white);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-md);
-            overflow: hidden;
-            padding: 25px;
-            border-top: 4px solid var(--primary);
-          "
-        >
-          <h3 style="margin-bottom: 15px; color: var(--primary)">
-            Acabamento Fino
-          </h3>
-          <p style="color: var(--text-muted); font-size: 0.95rem">
-            Mão de obra focada nos detalhes, cantos em meia esquadria (45 graus)
-            e rodapés embutidos.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- --- 4. SEÇÃO DA CALCULADORA --- -->
-    <section
-      id="calculadora"
-      style="
-        background-color: var(--bg-white);
-        border-top: 1px solid var(--border-color);
-        border-bottom: 1px solid var(--border-color);
-      "
-      class="section-padding"
-    >
-      <div class="container">
-        <h2 class="section-title">Calculadora de Materiais</h2>
-        <p class="section-subtitle">
-          Simule rapidamente a quantidade aproximada de revestimento que você
-          vai precisar para a sua área.
-        </p>
-
-        <div
-          style="
-            max-width: 500px;
-            margin: 0 auto;
-            background: var(--bg-light);
-            padding: 30px;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-          "
-        >
-          <div style="margin-bottom: 15px">
-            <label style="display: block; font-weight: 600; margin-bottom: 5px"
-              >Largura do ambiente (metros):</label
-            >
-            <input
-              type="number"
-              id="largura"
-              value="4"
-              style="
-                width: 100%;
-                padding: 10px;
-                border: 1px solid var(--border-color);
-                border-radius: var(--radius-sm);
-              "
-            />
-          </div>
-          <div style="margin-bottom: 20px">
-            <label style="display: block; font-weight: 600; margin-bottom: 5px"
-              >Comprimento do ambiente (metros):</label
-            >
-            <input
-              type="number"
-              id="comprimento"
-              value="5"
-              style="
-                width: 100%;
-                padding: 10px;
-                border: 1px solid var(--border-color);
-                border-radius: var(--radius-sm);
-              "
-            />
-          </div>
-          <button
-            class="btn btn-primary"
-            style="width: 100%"
-            onclick="
-              alert(
-                'Área total: ' +
-                  document.getElementById('largura').value *
-                    document.getElementById('comprimento').value +
-                  ' m²\nRecomendado comprar +10% para recortes.',
-              )
-            "
+          <a
+            href="https://www.youtube.com/results?search_query=animation+penguin"
+            target="_blank"
+            >Assista à Animação</a
           >
-            Calcular Área
-          </button>
-        </div>
-      </div>
-    </section>
+        </li>
 
-    <!-- --- 5. GALERIA DE OBRAS --- -->
-    <section id="galeria" class="container section-padding">
-      <h2 class="section-title">Galeria de Obras</h2>
-      <p class="section-subtitle">
-        Confira alguns dos nossos projetos executados com excelência e limpeza.
+        <li>
+          <h3>Elefante</h3>
+          <img
+            src="https://www.infoescola.com/wp-content/uploads/2010/06/elefante-africano-235722367.jpg"
+            alt="Animação de um elefante usando a tromba"
+            width="300"
+          />
+          <p>
+            Trombinha demonstra sua força ao levantar troncos e jogar água com
+            sua tromba.
+          </p>
+          <a
+            href="https://www.youtube.com/results?search_query=animation+elephant"
+            target="_blank"
+            >Assista à Animação</a
+          >
+        </li>
+
+        <li>
+          <h3>Canguru</h3>
+          <img
+            src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/F3CB/production/_104711426_rogerkangaroo2.jpg.webp"
+            alt="Animação de um canguru saltando"
+            width="300"
+          />
+          <p>
+            Uma animação de ciclo de salto contínuo, mostrando a agilidade do
+            Saltador.
+          </p>
+          <a
+            href="https://www.youtube.com/results?search_query=animation+kangaroo"
+            target="_blank"
+            >Assista à Animação</a
+          >
+        </li>
+
+        <li>
+          <h3>Golfinho</h3>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtD5lNy3CEBRG_0VhoAR4ocTGBDVYbSCYZdIX_xxY9QP4WfIDDe0p3vxnoZTfdqrVvyLye9olIXJ5-i0pkl2sbTKBKeJJvhawlvoMxag&s=10"
+            alt="Animação de um golfinho saltando na água"
+            width="300"
+          />
+          <p>
+            Fliper realiza saltos acrobáticos para fora da água nesta animação
+            fluida.
+          </p>
+          <a
+            href="https://www.youtube.com/results?search_query=animation+dolphin"
+            target="_blank"
+            >Assista à Animação</a
+          >
+        </li>
+      </ul>
+    </main>
+
+    <footer>
+      <p>2023 Estúdio de Animação Selvagem. Todos os direitos reservados.</p>
+      <p>
+        Dúvidas?
+        <a href="mailto:contato@estudioselvagem.com">Entre em contato</a>.
       </p>
-
-      <div
-        style="
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 20px;
-        "
-      >
-        <div
-          style="
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            background: var(--bg-white);
-          "
-        >
-          <img src="https://unsplash.com" alt="Obra de Cozinha Realizada" />
-          <div style="padding: 15px">
-            <strong style="color: var(--primary)"
-              >Reforma Cozinha Residencial</strong
-            >
-            <p
-              style="
-                color: var(--text-muted);
-                font-size: 0.85rem;
-                margin-top: 5px;
-              "
-            >
-              Ji-Paraná - RO
-            </p>
-          </div>
-        </div>
-        <div
-          style="
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            background: var(--bg-white);
-          "
-        >
-          <img src="https://unsplash.com" alt="Obra de Banheiro Realizada" />
-          <div style="padding: 15px">
-            <strong style="color: var(--primary)"
-              >Banheiro em Porcelanato Calacata</strong
-            >
-            <p
-              style="
-                color: var(--text-muted);
-                font-size: 0.85rem;
-                margin-top: 5px;
-              "
-            >
-              Ji-Paraná - RO
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- --- 6. CONTATO --- -->
-    <section
-      id="contato"
-      style="background-color: var(--primary); color: #ffffff"
-      class="section-padding"
-    >
-      <div class="container" style="text-align: center">
-        <h2 class="section-title" style="color: #ffffff">Entre em Contato</h2>
-        <p style="color: #e5e7eb; margin-bottom: 40px">
-          Peça seu orçamento sem compromisso e garanta o melhor acabamento para
-          a sua obra.
-        </p>
-        <a
-          href="https://wa.me"
-          target="_blank"
-          class="btn btn-secondary"
-          style="font-size: 1.1rem; padding: 15px 40px"
-          >Falar no WhatsApp</a
-        >
-      </div>
-    </section>
-
-    <!-- --- 7. RODAPÉ (FOOTER) --- -->
-    <footer
-      style="
-        background-color: #111827;
-        color: #9ca3af;
-        padding: 20px 0;
-        text-align: center;
-        border-top: 1px solid #374151;
-        font-size: 0.9rem;
-      "
-    >
-      <div class="container">
-        <p>&copy; 2026 LN Macedo Acabamentos. Todos os direitos reservados.</p>
-        <p style="font-size: 0.8rem; margin-top: 5px">Ji-Paraná - Rondônia</p>
-      </div>
     </footer>
   </body>
 </html>
