@@ -1,19 +1,166 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Seus Dados</title>
-    <h1>Email</h1>
-    <form action="processa.php" method="post">
-      <label>Nome: </label>
-      <input type="text" name="nome" />
-      <br /><br />
-      <label>Email:</label>
-      <input type="email" name="email" />
-      <br /><br />
-      No
-      <input type="submit" value="Enviar" />
-    </form>
+    <title>Crime Record Management System</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
+  <body>
+    <div class="min-h-screen bg-dark">
+      <div class="container mx-auto p-6">
+        <header class="mb-8">
+          <h1 class="text-3xl font-bold text-white mb-2">
+            Crime Record Management System
+          </h1>
+          <p class="text-gray">Manage and track criminal records efficiently</p>
+        </header>
+
+        <div class="tabs">
+          <div class="tab-list">
+            <button class="tab-trigger active" data-tab="dashboard">
+              Dashboard
+            </button>
+            <button class="tab-trigger" data-tab="criminals">Criminals</button>
+            <button class="tab-trigger" data-tab="crimes">Crimes</button>
+          </div>
+
+          <div class="tab-content active" id="dashboard">
+            <div class="grid-cards">
+              <div class="card">
+                <div class="card-header">
+                  <h3>Total Cases</h3>
+                </div>
+                <div class="card-content">
+                  <div class="text-3xl font-bold">45</div>
+                  <p class="text-sm text-gray">+2 since last month</p>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h3>Active Investigations</h3>
+                </div>
+                <div class="card-content">
+                  <div class="text-3xl font-bold">12</div>
+                  <p class="text-sm text-gray">3 cases pending review</p>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h3>Solved Cases</h3>
+                </div>
+                <div class="card-content">
+                  <div class="text-3xl font-bold">33</div>
+                  <p class="text-sm text-gray">73% success rate</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="chart-card">
+              <div class="card-header">
+                <h3>Monthly Crime Statistics</h3>
+              </div>
+              <div class="card-content">
+                <canvas id="crimeChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="criminals">
+            <form id="criminalForm" class="card">
+              <div class="card-header">
+                <h3>Add Criminal Record</h3>
+              </div>
+              <div class="card-content">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="criminalId">Criminal ID</label>
+                    <input
+                      type="text"
+                      id="criminalId"
+                      name="criminalId"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="nationalId">National ID</label>
+                    <input
+                      type="text"
+                      id="nationalId"
+                      name="nationalId"
+                      required
+                    />
+                  </div>
+                </div>
+                <button type="submit" class="submit-btn">
+                  Add Criminal Record
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="tab-content" id="crimes">
+            <form id="crimeForm" class="card">
+              <div class="card-header">
+                <h3>Register New Crime</h3>
+              </div>
+              <div class="card-content">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="caseId">Case ID</label>
+                    <input type="text" id="caseId" name="caseId" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="crimeType">Type of Crime</label>
+                    <select id="crimeType" name="crimeType" required>
+                      <option value="">Select type</option>
+                      <option value="theft">Theft</option>
+                      <option value="assault">Assault</option>
+                      <option value="fraud">Fraud</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status" name="status" required>
+                      <option value="">Select status</option>
+                      <option value="open">Open</option>
+                      <option value="investigating">Investigating</option>
+                      <option value="closed">Closed</option>
+                    </select>
+                  </div>
+                  <div class="form-group full-width">
+                    <label for="description">Description</label>
+                    <input
+                      type="text"
+                      id="description"
+                      name="description"
+                      required
+                    />
+                  </div>
+                </div>
+                <button type="submit" class="submit-btn">Register Crime</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
