@@ -2,7 +2,8 @@
 <html lang="br"></html>
 <title>Formulário para Pesquisa</title>
 
-<form action="">
+<br action="">
+<br>
 
  <label>Nome:</label>
  <input type="text" name = "Nome" required >
@@ -10,12 +11,12 @@
  <br><br>
 
  <label>Data de Nascimento</label>
-<input type="date" name = "Data de Nascimento" id="" >
+<input type="date" name = "Data de Nascimento" id=""  >
 
  <br><br>
 
 <label>E-Mail:</label>
-<input type="email" name = "E-Mail"  required>
+<input type="email" name = "E-Mail"  > 
 
 <br><br>
 
@@ -24,8 +25,58 @@
 
 <br><br>
 
+<label>Escolha seu gênero:</label>
+<input type="radio" name="Gênero" value="Masculino"  > Masculino
+<input type="radio" name="Gênero" value="Feminino"  > Feminino
+
+<br> </br>
+
+<label>Interesses:</label>
+<input type="checkbox" name="Interesses" value="programacao" > Programação
+<input type="checkbox" name="Interesses" value="desing" > Desing
+<input type="checkbox" name="Interesses" value="lerlivros" > Ler Livros
+<input type="checkbox" name="Interesses" value="jogarfutebol" > Jogar Futebol
+<input type="checkbox" name="Interesses" value="correr" > Correr
+<input type="checkbox" name="Interesses" value="natacao" > Natação
+<input type="checkbox" name="Interesses" value="tocarmusicas" > Tocar Músicas
+
+<br> </br>
+
+<h1>Liguagens de Programação Disponíveis</h1>
+<p>Qual linguagem deseja aprender?</p>
+
+<label>Escolha uma linguagem: </label>
+<select name="linguagem">
+<option value="html">HTML</option>
+<option value="css">CSS</option>
+<option value="javascript">JavaScript</option>
+</select>
+
+<br> </br>
+
+<label>Assunto:</label>
+<select name="assunto">
+<option value="duvida">Dúvida</option>
+<option value="sugestao">Sugestão</option>
+<option value="outro">Outro</option>
+</select>
+
+<br> </br>
+
+<label>Mensagem: </label><br>
+<textarea name="mensagem" rows="5" cols="40"></textarea>
+
+<br> </br>
+
+<input type="file" name="arquivos" >
+
+<br> </br>
+
 <input type="submit" value="Enviar" > 
-<button type="reset">Apagar</button>
+<button type="reset">Limpar</button>
+
+
+</form>
 
 </body>
 </html>
