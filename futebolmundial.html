@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo da Bola | Portal Global de Futebol</title>
+    <style>
+        /* ESTILO VISUAL MODERNO, LIMPO E VERDE */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #222;
+        }
+        header {
+            background: linear-gradient(135deg, #0b5628 0%, #117a3b 100%);
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 800;
+        }
+        header p {
+            margin: 8px 0 0 0;
+            font-size: 1.2em;
+            color: #d4eedb;
+            font-weight: 300;
+        }
+        
+        /* BARRA DE FILTROS E PESQUISA INTERATIVA */
+        .filtro-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin: -25px auto 25px auto;
+            max-width: 1200px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 10;
+        }
+        .grupo-botoes {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .busca-input {
+            flex: 1;
+            min-width: 280px;
+            padding: 12px 18px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 1em;
+            outline: none;
+            transition: all 0.3s;
+        }
+        .busca-input:focus {
+            border-color: #117a3b;
+            box-shadow: 0 0 0 3px rgba(17, 122, 59, 0.1);
+        }
+        .btn-filtro {
+            background-color: #eef7f1;
+            color: #0b5628;
+            border: 2px solid #0b5628;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        .btn-filtro.ativo, .btn-filtro:hover {
+            background-color: #0b5628;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .status-cobertura {
+            font-weight: bold;
+            color: #27ae60;
+            margin: 15px 0 25px 0;
+            text-transform: uppercase;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .grid-portal {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        @media (min-width: 992px) {
+            .grid-portal {
+                grid-template-columns: 2.3fr 1fr;
+            }
+        }
+
+        /* CARDS MODERNOS */
+        .card-noticia {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            margin-bottom: 30px;
+            border-top: 6px solid #0b5628;
+            transition: all 0.3s;
+        }
+        .card-noticia:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+        .badge {
+            color: white;
+            padding: 6px 14px;
+            font-size: 0.78em;
+            border-radius: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+        }
+        .badge-espanha { background-color: #c0392b; }
+        .badge-inglaterra { background-color: #2980b9; }
+        .badge-italia { background-color: #d35400; }
+        .badge-alemanha { background-color: #2c3e50; }
+        .badge-franca { background-color: #8e44ad; }
+        .badge-brasil { background-color: #27ae60; }
+        .badge-copa { background-color: #e67e22; }
+        
+        h2 {
+            margin-top: 0;
+            color: #111;
+            font-size: 2.2em;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+        .secao-titulo {
+            font-size: 1.4em;
+            color: #0b5628;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 6px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        p {
+            line-height: 1.8;
+            color: #444;
+            font-size: 1.05em;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+        ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        li {
+            line-height: 1.8;
+            color: #444;
+            font-size: 1.05em;
+            margin-bottom: 8px;
+        }
+
+        /* METRICAS */
+        .painel-metricas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .metrica-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #117a3b;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .metrica-box strong {
+            display: block;
+            font-size: 0.85em;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .metrica-box span {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #111;
+        }
+        .tabela-moderna {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        .tabela-moderna th {
+            background-color: #0b5628;
+            color: white;
+            text-align: left;
+            padding: 12px;
+        }
+        .tabela-moderna td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .tabela-moderna tr:nth-child(even) { background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>MUNDO DA BOLA</h1>
+        <p>O maior ecossistema integrado de estatísticas, clubes e seleções mundiais</p>
+    </header>
+
+    <div class="container">
+        <div class="filtro-container">
+            <div class="grupo-botoes">
+                <button class="btn-filtro ativo" onclick="filtrarConteudo('todos')">Todos</button>
+                <button class="btn-filtro" onclick="filtrarConteudo('espanha')">Espanha</button>
+                <button class="btn-filtro" onclick="filtrarConteudo('inglaterra')">Inglaterra</button>
+                <button class="btn-filtro" onclick="filtrarConteudo('italia')">Itália</button>
+                <button class="btn-filtro" onclick="filtrarConteudo('alemanha')">Alemanha</button>
+                <button class="btn-filtro" onclick="filtrarConteudo('franca')">França</button>
+                <button class="btn-filtro" onclick="filtrarConteudo('brasil')">Brasil</button>
+                <button class="btn-filtro" onclick="filtrarConteudo('copa')">Copa 2026</button>
+            </div>
+            <input type="text" id="campoBusca" class="busca-input" onkeyup="buscarTexto()" placeholder="Busque por clubes, finanças, seleções, títulos...">
+        </div>
+
+        <div class="status-cobertura">🟢 Monitoramento Unificado • Banco de Dados Histórico e Comercial Ativo</div>
+
+        <div class="grid-portal">
+            <main id="listaNoticias">
+                
+                <!-- CLUBES: ESPANHA -->
+                <article class="card-noticia" data-tags="espanha real madrid">
+                    <span class="badge badge-espanha">La Liga • Espanha</span>
+                    <h2>Real Madrid Club de Fútbol: A Maior Potência Econômica e Esportiva do Planeta</h2>
+                    <p>O Real Madrid opera em um patamar corporativo inigualável no futebol internacional. Gerando receitas impressionantes a partir da reestruturação comercial de seu estádio, o clube consegue equilibrar balanços financeiros de forma impecável, financiando contratações bombásticas e mantendo dominância esportiva contínua.</p>
+                    <div class="painel-metricas">
+                        <div class="metrica-box"><strong>Faturamento Anual</strong><span>€ 1,16 Bilhão</span></div>
+                        <div class="metrica-box"><strong>Valor de Mercado</strong><span>US$ 9,5 Bilhões</span></div>
+                    </div>
+                    <h3 class="secao-titulo">Histórico e Impacto Global</h3>
+                    <p>Sua sala de troféus reflete a soberania do clube dentro e fora das quatro linhas. O clube é o topo máximo de aspiração profissional para atletas de todos os continentes.</p>
+                    <ul>
+                        <li><strong>UEFA Champions League:</strong> 15 títulos oficiais, líder isolado da Europa.</li>
+                        <li><strong>La Liga:</strong> 36 títulos nacionais conquistados.</li>
+                        <li><strong>Comunidade Digital:</strong> Liderança mundial absoluta com 487,6 milhões de seguidores nas redes.</li>
+                    </ul>
+                </article>
+
+                <article class="card-noticia" data-tags="espanha barcelona">
+                    <span class="badge badge-espanha">La Liga • Espanha</span>
+                    <h2>Futbol Club Barcelona: Resgate Institucional e a Força do Modelo Blaugrana</h2>
+                <!-- CLUBES: INGLATERRA -->
+                <article class="card-noticia" data-tags="inglaterra manchester united">
+                    <span class="badge badge-inglaterra">Premier League • Inglaterra</span>
+                    <h2>Manchester United Football Club: A Maior Potência Comercial do Futebol Britânico</h2>
+                    <p>O Manchester United demonstra uma força de marca incomparável no mercado esportivo. Mesmo diante de oscilações esportivas temporárias, a engrenagem institucional de Old Trafford continua batendo recordes históricos em receitas de patrocínio e venda de produtos licenciados.</p>
+                    <div class="painel-metricas">
+                        <div class="metrica-box"><strong>Faturamento Anual</strong><span>€ 793,1 Milhões</span></div>
+                        <div class="metrica-box"><strong>Valor de Mercado</strong><span>US$ 7,2 Bilhões</span></div>
+                    </div>
+                    <h3 class="secao-titulo">Soberania Doméstica e Alcance Global</h3>
+                    <p>A sólida história construída pelos Red Devils gerou uma base gigantesca e fiel de fãs, concentrada fortemente nas Américas e no continente asiático.</p>
+                    <ul>
+                        <li><strong>Campeonato Inglês:</strong> 20 títulos nacionais, mantendo o recorde absoluto de troféus da liga.</li>
+                        <li><strong>UEFA Champions League:</strong> 3 taças continentais conquistadas de forma histórica.</li>
+                        <li><strong>Presença Digital:</strong> É o clube britânico mais popular do planeta, somando 238,6 milhões de seguidores.</li>
+                    </ul>
+                </article>
+
+                <article class="card-noticia" data-tags="inglaterra liverpool">
+                    <span class="badge badge-inglaterra">Premier League • Inglaterra</span>
+                    <h2>Liverpool Football Club: Eficiência de Gestão e Lucratividade Recorde na Premier League</h2>
+                    <p>O Liverpool aliou a sua fantástica mística de torcida a um modelo corporativo exemplar focado em análise de dados. Essa gestão cirúrgica transformou os Reds na operação financeira mais saudável e lucrativa de toda a primeira divisão da Inglaterra.</p>
+                    <div class="painel-metricas">
+                        <div class="metrica-box"><strong>Receita Arrecadada</strong><span>€ 836,1 Milhões</span></div>
+                        <div class="metrica-box"><strong>Avaliação Institucional</strong><span>US$ 6,2 Bilhões</span></div>
+                    </div>
+                    <h3 class="secao-titulo">Consistência Técnica e Peso de Camisa</h3>
+                    <p>A equipe mantém um patamar de competitividade extremo, traduzido em conquistas pesadas nos torneios de maior prestígio do planeta.</p>
+                    <ul>
+                        <li><strong>UEFA Champions League:</strong> 6 títulos continentais, erguendo-se como o clube inglês mais vencedor na Europa.</li>
+                        <li><strong>Campeonato Inglês:</strong> 19 taças nacionais em sua tradicional sala de troféus.</li>
+                        <li><strong>Presença Digital:</strong> Uma apaixonada comunidade global que já atinge 179,2 milhões de seguidores.</li>
+                    </ul>
+                </article>
+
+                <article class="card-noticia" data-tags="inglaterra manchester city">
+                    <span class="badge badge-inglaterra">Premier League • Inglaterra</span>
+                    <h2>Manchester City Football Club: A Hegemonia Esportiva da Era Moderna</h2>
+                    <p>O Manchester City estabeleceu novos padrões táticos e de negócios no futebol mundial. Sob a diretriz corporativa do City Football Group, a agremiação converteu investimentos estruturais em uma dinastia de taças sem paralelos na última década.</p>
+                    <div class="painel-metricas">
+                        <div class="metrica-box"><strong>Faturamento Consolidado</strong><span>€ 900,0 Milhões</span></div>
+                        <div class="metrica-box"><strong>Valor de Mercado</strong><span>US$ 5,5 Bilhões</span></div>
+                    </div>
+                    <h3 class="secao-titulo">Domínio Absoluto e Consolidação</h3>
+                    <p>A equipe quebrou recordes sucessivos no futebol britânico e fincou sua bandeira em território internacional através de um projeto de longo prazo.</p>
+                    <ul>
+                        <li><strong>Campeonato Inglês:</strong> 10 títulos nacionais, incluindo o inédito tetracampeonato consecutivo recente.</li>
+                        <li><strong>UEFA Champions League e Mundial:</strong> 1 título europeu e 1 Mundial da FIFA, sacramentando o projeto.</li>
+                        <li><strong>Presença Digital:</strong> Grande engajamento com o público jovem, alcançando 187,8 milhões de seguidores.</li>
+                    </ul>
+                </article>
+                <article class="card-noticia" data-tags="inglaterra arsenal">
+                    <span class="badge badge-inglaterra">Premier League • Inglaterra</span>
+                    <h2>Arsenal Football Club: O Salto Corporativo e a Tradição dos Gunners em Londres</h2>
+                    <p>O Arsenal estabilizou sua saúde financeira e esportiva de forma fantástica, voltando a figurar como um dos principais candidatos ao protagonismo no futebol europeu com investimentos pesados no plantel de atletas.</p>
+                    <div class="painel-metricas">
+                        <div class="metrica-box"><strong>Receita Anual</strong><span>US$ 895 Milhões</span></div>
+                        <div class="metrica-box"><strong>Avaliação de Mercado</strong><span>US$ 5,4 Bilhões</span></div>
+                    </div>
+                    <h3 class="secao-titulo">Tradição e Consistência</h3>
+                    <p>O clube do norte de Londres carrega marcas gloriosas de consistência nacional de longo prazo:</p>
+                    <ul>
+                        <li><strong>Campeonato Inglês:</strong> 13 títulos conquistados na primeira divisão.</li>
+                        <li><strong>Copa da Inglaterra:</strong> 14 troféus vencidos, isolando-se como o maior recordista absoluto do torneio.</li>
+                        <li><strong>Comunidade Digital:</strong> Engajamento consolidado e apaixonado nas redes com 118,5 milhões de seguidores.</li>
+                    </ul>
+                </article>
+
+                <article class="card-noticia" data-tags="inglaterra chelsea">
+                    <span class="badge badge-inglaterra">Premier League • Inglaterra</span>
+                    <h2>Chelsea Football Club: A Reestruturação de Mercado dos Blues do Oeste de Londres</h2>
+                    <p>O Chelsea mantém sua relevância comercial na primeira prateleira mundial por meio de reestruturações de elenco agressivas e atração contínua de patrocínios de tecnologia e mídia.</p>
+                    <div class="painel-metricas">
+                        <div class="metrica-box"><strong>Avaliação de Mercado</strong><span>US$ 4,2 Bilhões</span></div>
+                        <div class="metrica-box"><strong>Modelo Econômico</strong><span>Forte atuação em comercialização de contratos de longo prazo.</span></div>
+                    </div>
+                    <h3 class="secao-titulo">Conquistas Recentes</h3>
+                    <p>A galeria do clube azul londrino expandiu-se de forma avassaladora no século XXI:</p>
+                    <ul>
+                        <li><strong>Nacionais e Mundiais:</strong> 6 Ligas Nacionais e 2 taças do Mundial de Clubes da FIFA.</li>
+                        <li><strong>UEFA Champions League:</strong> 2 títulos europeus de expressão máxima.</li>
+                        <li><strong>Comunidade Digital:</strong> Presença digital robusta alcançando 156,5 milhões de seguidores.</li>
+                    </ul>
+                </article>
+
+                <!-- CLUBES: OUTROS GIGANTES DA EUROPA -->
+                <article class="card-noticia" data-tags="espanha atletico de madrid">
+                    <span class="badge badge-espanha">La Liga • Espanha</span>
+                    <h2>Club Atlético de Madrid: A Força da Terceira Potência do Futebol Espanhol</h2>
+                    <p>O Atlético de Madrid consolidou seu espaço na elite europeia ao quebrar a dualidade histórica na Espanha. Com uma gestão focada na valorização de ativos e sócios, o clube estabilizou suas receitas em patamares bilionários.</p>
+                    <div class="painel-metricas">
+                        <div class="metrica-box"><strong>Avaliação de Mercado</strong><span>US$ 2,95 Bilhões</span></div>
+                        <div class="metrica-box"><strong>Perfil Comercial</strong><span>Alta receita com bilheteria e naming rights do estádio moderno.</span></div>
+                    </div>
+                    <h3 class="secao-titulo">Competitividade de Elite</h3>
+                    <p>Os colchoneros acumulam conquistas pesadas no cenário doméstico e continental nas últimas décadas:</p>
+                    <ul>
+                        <li><strong>La Liga:</strong> 11 títulos nacionais oficiais.</li>
+                        <li><strong>UEFA Europa League:</strong> 3 taças continentais conquistadas em finais marcantes.</li>
+                        <li><strong>Comunidade Digital:</strong> Base de torcedores engajada registrando 91,4 milhões de seguidores.</li>
+                    </ul>
+                </article>
+
+                <article class="card-noticia" data-tags="franca paris saint-germain psg">
+                    <span class="badge badge-franca">Ligue 1 • França</span>
+                    <h2>Paris Saint-Germain Football Club: Entre o Domínio Francês e o Estilo de Vida Global</h2>
+                    <p>O Paris Saint-Germain transcendeu as barreiras do esporte para se posicionar como um ícone de cultura, moda e entretenimento global. Apoiado por investimentos de grande porte da Qatar Sports Investments, o clube parisiense redesenhou o mapa do futebol francês.</p>
+                    <div class="painel-metricas">
+                        <div class="metrica-box"><strong>Receita Registrada</strong><span>€ 837,0 Milhões</span></div>
+                        <div class="metrica-box"><strong>Valor Estimado</strong><span>US$ 5,8 Bilhões</span></div>
+                    </div>
+                    <h3 class="secao-titulo">Soberania Local</h3>
+                    <p>No cenário doméstico, o clube estabeleceu uma soberania incontestável, embora mantenha a obsessão pelo topo do continente:</p>
+                    <ul>
+                        <li><strong>Ligue 1:</strong> 12 títulos nacionais, dominando a era moderna do país.</li>
+                        <li><strong>Objetivo Continental:</strong> O clube segue em busca de sua inédita taça da UEFA Champions League.</li>
+                        <li><strong>Comunidade Digital:</strong> Possui forte apelo digital com 208,1 milhões de seguidores.</li>
+                    </ul>
+                </article>
+
+                <article class="card-noticia" data-tags="alemanha bayern de munique">
+                    <span class="badge badge-alemanha">Bundesliga • Alemanha</span>
+                    <h2>FC Bayern München: O Modelo de Sustentabilidade Econômica e Soberania Alemã</h2>
+                    <p>O Bayern de Munique é reverenciado mundialmente como o exemplo máximo de saúde financeira aliada ao sucesso esportivo. Operando sob a regra alemã que protege o controle dos torcedores sobre o clube, os bávaros mantêm dívidas controladas.</p>
+                    <div class="painel-metricas">
+                        <div class="metrica-box"><strong>Arrecadação Anual</strong><span>€ 860,6 Milhões</span></div>
+                        <div class="metrica-box"><strong>Avaliação de Mercado</strong><span>US$ 5,7 Bilhões</span></div>
+                    </div>
+                    <h3 class="secao-titulo">Hegemonia Bávara</h3>
+                    <p>O domínio interno do Bayern na Alemanha é acompanhado por uma reputação temida em toda a Europa:</p>
+                    <ul>
+                        <li><strong>Bundesliga:</strong> 33 títulos nacionais, sendo o campeão absoluto de seu país.</li>
+                        <li><strong>UEFA Champions League:</strong> 6 títulos europeus, consolidando sua presença na primeira prateleira do futebol.</li>
+                        <li><strong>Comunidade Digital:</strong> Forte crescimento recente, atingindo 165,2 milhões de seguidores.</li>
+                    </ul>
+                </article>
+                <!-- CLUBES: ITÁLIA -->
+                <article class="card-noticia" data-tags="italia juventus">
+                    <span class="badge badge-italia">Serie A • Itália</span>
+                    <h2>Juventus Football Club: A Velha Senhora e a Liderança Financeira do Futebol Italiano</h2>
+                    <p>A Juventus de Turim permanece como a instituição mais bem posicionada financeiramente no cenário do futebol italiano. Controlada há mais de um século pela família Agnelli, a equipe busca reestruturar seus pilares institucionais para retornar ao topo da Europa.</p>
+                    <div class="painel-metricas">
+                        <div class="metrica-box"><strong>Valor de Mercado</strong><span>US$ 2,0 Bilhões</span></div>
+                        <div class="metrica-box"><strong>Perfil de Negócios</strong><span>Faturamento robusto ancorado em marca própria e estádio privado.</span></div>
+                    </div>
+                    <h3 class="secao-titulo">Hegemonia Esportiva</h3>
+                    <p>Nacionalmente, ninguém conquistou mais do que a equipe de Turim, que detém marcas históricas:</p>
+                    <ul>
+                        <li><strong>Serie A (Scudettos):</strong> 36 títulos de campeã italiana oficial, recorde absoluto no país.</li>
+                        <li><strong>UEFA Champions League:</strong> 2 títulos continentais conquistados em sua rica história.</li>
+                        <li><strong>Comunidade Digital:</strong> Tem 178,3 milhões de seguidores.</li>
+                    </ul>
+                </article>
+
+                <article class="card-noticia" data-tags="italia milan">
+                    <span class="badge badge-italia">Serie A • Itália</span>
+                    <h2>Associazione Calcio Milan: A Mística Europeia e a Expansão Comercial da Marca Rossonera</h2>
+                    <p>O Milan está no meio de um projeto ambicioso de revitalização financeira e esportiva. Dono de uma das camisas mais tradicionais e temidas do planeta, o clube de San Siro reestruturou suas finanças e equilibrou seus balanços comerciais.</p>
+                    <div class="painel-metricas">
+                        <div class="metrica-box"><strong>Faturamento Anual</strong><span>Na casa dos € 400 Milhões</span></div>
+                        <div class="metrica-box"><strong>Foco de Investimento</strong><span>Modernização da marca e captação de patrocínios internacionais.</span></div>
+                    </div>
+                    <h3 class="secao-titulo">Histórico Pesado</h3>
+                    <p>O Milan carrega o status de um dos maiores gigantes do continente europeu de todos os tempos:</p>
+                    <ul>
+                        <li><strong>UEFA Champions League:</strong> 7 títulos europeus, consolidado como o segundo maior vencedor da história do torneio.</li>
+                        <li><strong>Serie A (Campeonato Italiano):</strong> 19 títulos nacionais conquistados.</li>
+                        <li><strong>Comunidade Digital:</strong> Conta com 81 milhões de seguidores.</li>
+                    </ul>
+                </article>
+
+                <!-- CLUBES: BRASIL -->
+                <article class="card-noticia" data-tags="brasil flamengo">
+                    <span class="badge badge-brasil">Brasileirão • Brasil</span>
+                    <h2>Clube de Regatas do Flamengo: A Maior Potência Financeira e Digital Fora da Europa</h2>
+                    <p>O Flamengo estabeleceu um novo paradigma de gestão no futebol sul-americano. Após passar por um processo profundo de saneamento fiscal e financeiro na última década, o clube carioca converteu sua imensa torcida em um motor de arrecadação sem precedentes no continente.</p>
+                    <div class="painel-metricas">
+                        <div class="metrica-box"><strong>Faturamento Anual</strong><span>Supera a marca de R$ 1,0 Bilhão de forma recorrente</span></div>
+                        <div class="metrica-box"><strong>Status Financeiro</strong><span>Altamente saudável, gerando superávits consecutivos.</span></div>
+                    </div>
+                    <h3 class="secao-titulo">Soberania das Américas</h3>
+                    <p>A saúde das contas se refletiu diretamente em uma das eras mais vitoriosas e dominantes da história do clube:</p>
+                    <ul>
+                        <li><strong>Copa Libertadores da América:</strong> 3 títulos continentais de expressão máxima.</li>
+                        <li><strong>Campeonato Brasileiro:</strong> 8 taças nacionais conquistadas.</li>
+                        <li><strong>Comunidade Digital:</strong> É a maior potência digital fora da Europa, acumulando 71,6 milhões de seguidores.</li>
+                    </ul>
+                </article>
+
+                <article class="card-noticia" data-tags="brasil palmeiras">
+                    <span class="badge badge-brasil">Brasileirão • Brasil</span>
+                    <h2>Sociedade Esportiva Palmeiras: A Força do Maior Campeão Nacional do Brasil</h2>
+                    <p>O Palmeiras solidificou-se como uma das maiores referências de eficiência administrativa e técnica do continente americano. Com foco em investimentos estruturais modernos, o Alviverde consolidou receitas colossais nos últimos anos.</p>
+                    <div class="painel-metricas">
+                        <div class="metrica-box"><strong>Faturamento Estimado</strong><span>R$ 900 Milhões a R$ 1,0 Bilhão</span></div>
+                        <div class="metrica-box"><strong>Modelo de Receitas</strong><span>Sustentável, com alta receita de sócios e vendas de atletas da base.</span></div>
+                    </div>
+                    <h3 class="secao-titulo">Consistência Vitoriosa</h3>
+                    <p>Dentro de campo, a estabilidade financeira permitiu a construção de uma era altamente vitoriosa no futebol continental:</p>
+                    <ul>
+                        <li><strong>Campeonato Brasileiro:</strong> 12 títulos oficiais, consolidando o posto de maior campeão nacional do Brasil.</li>
+                        <li><strong>Copa Libertadores da América:</strong> 3 taças continentais de expressão máxima.</li>
+                        <li><strong>Comunidade Digital:</strong> Figura no top 10 de clubes de fora da Europa, com cerca de 20 milhões de seguidores.</li>
+                    </ul>
+                </article>
+
+                <article class="card-noticia" data-tags="brasil corinthians">
+                    <span class="badge badge-brasil" style="background-color: #333333;">Brasileirão • Brasil</span>
+                    <h2>Sport Club Corinthians Paulista: Influência Cultural e o Fenômeno da Fiel Torcida</h2>
+                    <p>O Sport Club Corinthians Paulista é uma das maiores potências de influência cultural, engajamento digital e relevância esportiva fora do eixo europeu. O "Timão" compete diretamente com o Flamengo em termos de impacto de massa nas Américas.</p>
+                    <div class="painel-metricas">
+                        <div class="metrica-box"><strong>Faturamento Recorrente</strong><span>R$ 987 Milhões</span></div>
+                        <div class="metrica-box"><strong>Passivo Consolidado</strong><span>Perto de R$ 2,7 Bilhões</span></div>
+                    </div>
+                    <h3 class="secao-titulo">Histórico e Impacto de Massa</h3>
+                    <p>Apesar do cenário financeiro complexo com sua dívida consolidada, sua força de mercado se mantém gigantesca:</p>
+                    <ul>
+                        <li><strong>Mundiais de Clubes da FIFA:</strong> 2 títulos (2000 e 2012), sendo um dos raros clubes fora da Europa a possuir este feito.</li>
+                        <li><strong>Copa Libertadores da América:</strong> 1 título continental conquistado de forma invicta.</li>
+                        <li><strong>Comunidade Digital:</strong> Segunda maior potência digital do Brasil, registrando 43,1 milhões de seguidores.</li>
+                    </ul>
+                </article>
+
+                <!-- TABELA COMPARATIVA BRASIL -->
+                <article class="card-noticia" data-tags="brasil flamengo palmeiras corinthians">
+                    <span class="badge badge-brasil">Análise Especial • Brasil</span>
+                    <h2>Tabela Comparativa: As Forças Econômicas e Digitais do Futebol Brasileiro</h2>
+                    <p>O painel abaixo cruza os dados auditados de faturamento, endividamento estrutural, conquistas e relevância digital dos três gigantes nacionais:</p>
+                    <table class="tabela-moderna">
+                        <thead>
+                            <tr>
+                                <th>Clube</th>
+                                <th>Faturamento Anual</th>
+                                <th>Situação / Dívida Estrutural</th>
+                                <th>Principais Títulos</th>
+                                <th>Seguidores Digitais</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Flamengo</strong></td>
+                                <td>Acima de R$ 1,0 Bilhão</td>
+                                <td>Finanças equilibradas / Superavitário</td>
+                                <td>3 Libertadores, 8 Brasileirões</td>
+                                <td>71,6 Milhões</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Palmeiras</strong></td>
+                                <td>R$ 900 Mi a R$ 1,0 Bilhão</td>
+                                <td>Gestão sólida / Impulsionado pela base</td>
+                                <td>3 Libertadores, 12 Brasileirões</td>
+                                <td>20,0 Milhões</td>
+                            </tr>
+                            <tr>
+                <!-- SELEÇÕES GLOBAIS: CONTEXTO COPA DO MUNDO 2026 -->
+                <article class="card-noticia" data-tags="copa brasil espanha inglaterra">
+                    <span class="badge badge-copa">Copa do Mundo 2026 • Seleções</span>
+                    <h2>Painel das Seleções Globais: Relevância Comercial, Marcas e Histórico</h2>
+                    <p>As federações internacionais operam como ecossistemas bilionários, gerando receitas massivas por meio de direitos de transmissão, eventos globais e acordos de longa duração com fornecedores de material esportivo.</p>
+                    
+                    <h3 class="secao-titulo">Seleção Brasileira (CBF)</h3>
+                    <p>A única seleção pentacampeã mundial (1958, 1962, 1970, 1994, 2002) continua sendo a maior referência de talento do planeta futebolístico. Do ponto de vista de negócios, sua marca atrai os maiores contratos de patrocínio global e lidera os índices de audiência televisiva em torneios internacionais.</p>
+
+                    <h3 class="secao-titulo">Seleção Espanhola (RFEF)</h3>
+                    <p>Detentora do título mundial de 2010 e multicampeã da Eurocopa, a Espanha dita tendências táticas no futebol moderno. O modelo focado em categorias de base de seus clubes principais garante à federação um suprimento constante de atletas valorizados no mercado.</p>
+
+                    <h3 class="secao-titulo">Seleção Inglesa (The FA)</h3>
+                    <p>A federação de futebol mais antiga do mundo (campeã em 1966) capitaliza diretamente sobre o sucesso comercial estrondoso da Premier League. Seu elenco figura rotineiramente entre os maiores valores de mercado estimados em avaliações globais de competições.</p>
+                </article>
+                                <!-- COBERTURA COPA DO MUNDO 2026 (PARTE 2 DE 5) -->
+                <article class="card-noticia" data-tags="copa espanha selecoes">
+                    <span class="badge badge-copa">Copa 2026 • Ao Vivo</span>
+                    <h2>Seleção Espanhola (RFEF) – A Juventude e a Posse de Bola Implacável</h2>
+                    <p>A Real Federação Espanhola de Futebol (RFEF) apresenta neste Mundial um dos projetos táticos mais consolidados e admirados da Europa. Fiel ao estilo que consagrou o país com o título de 2010 e com as conquistas continentais, a Espanha aposta em um sistema focado no controle absoluto do ritmo de jogo por meio de passes precisos.</p>
+                    
+                    <h3 class="secao-titulo">Modelo Econômico e Renovação Técnica</h3>
+                    <p>O sucesso da marca espanhola reside na engrenagem perfeita entre a federação e as categorias de base de seus principais clubes locais, como Barcelona e Real Madrid. Isso garante um suprimento contínuo de atletas tecnicamente evoluídos e altamente valorizados no mercado global.</p>
+                    
+                    <div class="painel-metricas">
+                        <div class="metrica-box" style="border-left-color: #c0392b;">
+                            <strong>Valor do Elenco</strong>
+                            <span>€ 1,10 Bilhão</span>
+                        </div>
+                        <div class="metrica-box" style="border-left-color: #d35400;">
+                            <strong>Estilo de Jogo</strong>
+                            <span>Posse e Pressão Alta</span>
+                        </div>
+                    </div>
+
+                    <p>Com um elenco jovem, mas que já carrega o peso de grandes competições, os espanhóis despontam como fortíssimos candidatos a chegar nas fases decisivas na América do Norte. O desafio da equipe é transformar o imenso volume de jogo em eficiência letal na grande área adversária.</p>
+                </article>
+
+                                <!-- COBERTURA COPA DO MUNDO 2026 (PARTE 3 DE 5) -->
+                <article class="card-noticia" data-tags="copa inglaterra selecoes">
+                    <span class="badge badge-copa">Copa 2026 • Ao Vivo</span>
+                    <h2>Seleção Inglesa (The FA) – O Elenco Mais Valioso e a Pressão Comercial</h2>
+                    <p>A Football Association (The FA) gerencia um dos maiores fenômenos comerciais deste Mundial de 2026 [23/06/2026]. Beneficiando-se diretamente do sucesso estrondoso de marketing e visibilidade da Premier League, o English Team atrai acordos de mídia bilionários e direitos de exclusividade em solo norte-americano.</p>
+                    
+                    <h3 class="secao-titulo">Estabilidade Comercial e Força Coletiva</h3>
+                    <p>Com um elenco recheado de superestrelas internacionais, a Inglaterra ostenta um dos maiores valores de mercado integrados da competição [23/06/2026]. O desafio histórico da federação é traduzir esse poder financeiro em estabilidade emocional nos confrontos decisivos.</p>
+                    
+                    <div class="painel-metricas">
+                        <div class="metrica-box" style="border-left-color: #2980b9;">
+                            <strong>Valor do Elenco</strong>
+                            <span>€ 1,38 Bilhão</span>
+                        </div>
+                        <div class="metrica-box" style="border-left-color: #34495e;">
+                            <strong>Principal Trunfo</strong>
+                            <span>Força Física e Transição</span>
+                        </div>
+                    </div>
+
+                    <p>Os analistas de mercado apontam que as parcerias comerciais firmadas pela federação para este ciclo de 2026 bateram recordes corporativos [23/06/2026]. Dentro de campo, os inventores do futebol buscam quebrar um jejum de títulos mundiais que já dura seis décadas, amparados por uma geração jovem extremamente letal.</p>
+                </article>
+
+                                <!-- COBERTURA COPA DO MUNDO 2026 (PARTE 4 DE 5) -->
+                <article class="card-noticia" data-tags="copa argentina selecoes">
+                    <span class="badge badge-copa">Copa 2026 • Ao Vivo</span>
+                    <h2>Seleção Argentina (AFA) – O Legado dos Campeões e a Força na América do Norte</h2>
+                    <p>A Associação do Futebol Argentino (AFA) chega a esta Copa do Mundo de 2026 amparada por uma das marcas mais valiosas em termos de engajamento emocional e paixão popular [23/06/2026]. Defendendo sua forte tradição competitiva, a "Albiceleste" atrai multidões aos estádios norte-americanos, gerando receitas massivas de bilheteria e forte impacto comercial [23/06/2026].</p>
+                    
+                    <h3 class="secao-titulo">Sustentabilidade Técnica e a Nova Geração</h3>
+                    <p>Sob a gestão tática atual, a Argentina conseguiu promover uma renovação cirúrgica em seu plantel, integrando jovens meio-campistas dinâmicos e defensores agressivos que atuam nos principais clubes europeus, mantendo o elenco altamente competitivo [23/06/2026].</p>
+                    
+                    <div class="painel-metricas">
+                        <div class="metrica-box" style="border-left-color: #2980b9;">
+                            <strong>Valor do Elenco</strong>
+                            <span>€ 950 Milhões</span>
+                        </div>
+                        <div class="metrica-box" style="border-left-color: #5dade2;">
+                            <strong>Estilo de Jogo</strong>
+                            <span>Posse de Bola e Garra</span>
+                        </div>
+                    </div>
+
+                    <p>A federação argentina expandiu de forma agressiva os seus acordos de patrocínio globais, focando no mercado norte-americano e asiático [23/06/2026]. Dentro das quatro linhas, a estratégia foca em um sistema de jogo compacto, capaz de reter a bola sob pressão e acionar seus atacantes de elite em velocidade máxima [23/06/2026].</p>
+                </article>
+
+                                <!-- COBERTURA COPA DO MUNDO 2026 (PARTE 5 DE 5) -->
+                <article class="card-noticia" data-tags="copa selecoes">
+                    <span class="badge badge-copa">Copa 2026 • Tabelas e Grupos</span>
+                    <h2>Painel Estrutural do Mundial: Divisão de Grupos e o Panorama da Competição</h2>
+                    <p>Com o formato inédito de 48 seleções divididas em 12 grupos de 4 equipes cada, a Copa do Mundo de 2026 estabelece uma dinâmica intensa onde os dois primeiros de cada grupo e os oito melhores terceiros colocados avançam para a fase eliminatória de dezesseis-avos de final [23/06/2026]. Abaixo está a configuração oficial de grupos que concentram as maiores potências do torneio [23/06/2026]:</p>
+                    
+                    <table class="tabela-moderna">
+                        <thead>
+                            <tr>
+                                <th>Grupo</th>
+                                <th>Seleção Cabeça de Chave</th>
+                                <th>Demais Integrantes do Bloco</th>
+                                <th>Status da Chave</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Grupo A</strong></td>
+                                <td>Estados Unidos</td>
+                                <td>Concorrentes da América, Europa e Ásia</td>
+                                <td>Sede Principal Ativa</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Grupo B</strong></td>
+                                <td>Munique / Alemanha</td>
+                                <td>Concorrentes Europeus e Africanos</td>
+                                <td>Alta Competitividade</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Grupo C</strong></td>
+                                <td>Seleção Brasileira</td>
+                                <td>Rivais Continentais e Intercontinentais</td>
+                                <td>Foco no Hexacampeonato</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Grupo D</strong></td>
+                                <td>Seleção Argentina</td>
+                                <td>Adversários de Médio e Alto Escalão</td>
+                                <td>Defesa de Tradição</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="bloco-destaque-visual" style="border-left-color: #e67e22; background: #fffcf9;">
+                        <h4>Logística e Fusos Horários na América do Norte</h4>
+                        <p>A FIFA estruturou o calendário para agrupar os jogos por regiões (Oeste, Central e Leste) [23/06/2026]. Essa estratégia minimiza o desgaste das viagens longas entre os três países organizadores e preserva a integridade física dos atletas de elite [23/06/2026].</p>
+                    </div>
+
+                    <p>Os direitos globais de transmissão televisiva e as plataformas de streaming registram recordes históricos de faturamento e engajamento nesta edição [23/06/2026]. O ecossistema econômico gerado ao redor do evento projeta movimentações financeiras bilionárias na indústria do esporte global [23/06/2026].</p>
+                </article>
+
+                
+            </main>
+
+            <!-- BARRA LATERAL (SIDEBAR DIREITA DO PORTAL) -->
+            <aside>
+                <div class="card-noticia" style="padding: 25px; border-top: 6px solid #117a3b;">
+                    <h3 style="margin-top: 0; color: #0b5628; font-size: 1.3em;">Central do Usuário</h3>
+                    <p style="font-size: 0.95em; color: #555;">Navegue pelos botões do menu superior ou digite termos específicos na caixa de busca para filtrar dados financeiros, títulos ou redes sociais em tempo real.</p>
+                    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+                    <h4 style="margin: 0 0 10px 0; font-size: 1em; text-transform: uppercase; color: #666;">Dados do Portal</h4>
+                    <p style="margin: 6px 0; font-size: 0.9em;">📊 Atualização: Diária Automática</p>
+                    <p style="margin: 6px 0; font-size: 0.9em;">⚡ Tecnologia: HTML5 / JS Nativo</p>
+                    <p style="margin: 6px 0; font-size: 0.9em;">🟢 Interface: Responsiva Moderna</p>
+                </div>
+
+                <div class="card-noticia" style="padding: 25px; border-top: 6px solid #2980b9;">
+                    <h3 style="margin-top: 0; color: #2980b9; font-size: 1.3em;">Ligas Monitoradas</h3>
+                    <p style="font-size: 0.95em; color: #555;">O radar financeiro e esportivo cobre os principais campeonatos integrados:</p>
+                    <ul style="padding-left: 20px; margin: 10px 0; font-size: 0.95em; line-height: 1.8; color: #444;">
+                        <li>La Liga (Espanha)</li>
+                        <li>Premier League (Inglaterra)</li>
+                        <li>Serie A (Itália)</li>
+                        <li>Brasileirão (Brasil)</li>
+                        <li>Bundesliga (Alemanha)</li>
+                        <li>Ligue 1 (França)</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- RODAPÉ INSTITUCIONAL -->
+    <footer style="background-color: #0b5628; color: white; text-align: center; padding: 30px 20px; margin-top: 50px; box-shadow: 0 -4px 10px rgba(0,0,0,0.05);">
+        <p style="margin: 0; font-weight: bold; font-size: 1.1em; color: white; text-align: center;">&copy; 2026 MUNDO DA BOLA - O Ecossistema Global do Futebol</p>
+        <p style="margin: 8px 0 0 0; font-size: 0.88em; color: #d4eedb; text-align: center;">Estrutura 100% estática desenvolvida em HTML Puro, CSS Inline e JavaScript de filtragem nativa.</p>
+    </footer>
+
+    <!-- SCRIPTS DE JAVASCRIPT NATIVO PARA FILTRAGEM E BUSCA -->
+    <script>
+        // Função para filtrar pelos botões rápidos de continentes/países
+        function filtrarConteudo(tagAlvo) {
+            const botoes = document.querySelectorAll('.btn-filtro');
+            botoes.forEach(btn => btn.classList.remove('ativo'));
+            
+            if(event && event.target) {
+                event.target.classList.add('ativo');
+            }
+
+            const artigos = document.querySelectorAll('#listaNoticias .card-noticia');
+            
+            artigos.forEach(artigo => {
+                if(!artigo.hasAttribute('data-tags')) return;
+
+                const tags = artigo.getAttribute('data-tags').toLowerCase();
+                
+                if (tagAlvo === 'todos' || tags.includes(tagAlvo.toLowerCase())) {
+                    artigo.style.display = 'block';
+                } else {
+                    artigo.style.display = 'none';
+                }
+            });
+        }
+
+        // Função para filtragem avançada por digitação (Pesquisa por Texto)
+        function buscarTexto() {
+            const textoBusca = document.getElementById('campoBusca').value.toLowerCase();
+            const artigos = document.querySelectorAll('#listaNoticias .card-noticia');
+
+            artigos.forEach(artigo => {
+                const conteudoTexto = artigo.innerText.toLowerCase();
+                
+                if (conteudoTexto.includes(textoBusca)) {
+                    artigo.style.display = 'block';
+                } else {
+                    artigo.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
