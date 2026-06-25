@@ -714,9 +714,11 @@
 
                 const tags = artigo.getAttribute('data-tags').toLowerCase();
                 
-                if (tagAlvo === 'todos' || tags.includes(tagAlvo.toLowerCase())) {
+                if (tagAlvo === 'todos' || tags.includes(tagAlvo.toLowerCase())) 
+                {
                     artigo.style.display = 'block';
-                } else {
+                } else 
+                {
                     artigo.style.display = 'none';
                 }
             });
