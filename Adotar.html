@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Pata Amiga - Cadastro para Adoção</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+       
+  
+
+<h1>Pata Amiga</h1>
+
+<p>Abrigo comunitário que conecta famílias a animais resgatados da região.</p>
+
+<h2>Animais aguardando um lar</h2>
+
+<p>Todos os pets abaixo passaram por avaliação veterinária e estão prontos para adoção. Preencha o cadastro para agendar uma visita de apresentação.</p>
+
+<ul>
+    <li>Thor — cachorro adulto, dócil e brincalhão</li>
+    <li>Luna — gata jovem, independente e carinhosa</li>
+    <li>Pipoca — coelho, tranquilo e de fácil adaptação</li>
+    <li>Pipoca — coelho, tranquilo e de fácil adaptação</li>
+</ul>
+
+<h1>Cadastro do adotante</h1>
+
+<p>Informe seus dados e preferências com sinceridade. Nossa equipe analisa cada cadastro para garantir o bem-estar do animal e da família.</p>
+
+<h2>Quem vai adotar</h2>
+
+<form action="processa.php" method="post">
+<label>Nome Completo: </label>
+<input type="text" name="nome">
+
+<br><br>
+
+<label>Email:</label>
+<input type="email" name="email">
+
+<br><br>
+
+<label>Crie uma senha para acompanhar o processo</label>
+<input type="password" name="senha">
+
+<br><br>
+
+
+<label for="contato">Telefone (Somente Números) /label>
+<input type="number" name="contato" >
+
+<br><br>
+
+<label>Data de Nascimento:</label>
+<input type="date" name="nascimento">
+
+<br><br>
+
+<label>Tipo de Moradia: </label>
+<input type="radio" name="moradia" value="apartamento"> Apartamento
+<input type="radio" name="moradia" value=" Casa com quintal">  Casa com quintal
+<input type="radio" name="moradia" value="sítio ou chácara" > sítio ou chácara
+
+<br><br>
+
+<h3>Prefências de Adoção</h3>
+
+<label>Porte do animal desejado: </label>
+<select name="porte">
+<option value="Gigante - Acima de 40 Kg">Gigante - Acima de 40 Kg</option>
+<option value="Grande - De 25 a 40 Kg">Grande - De 25 a 40 Kg</option>
+<option value="Médio - De 10 a 15 Kg">Médio - De 10 a 25 Kg</option>
+<option value="Pequeno - Até 10 Kg">Pequeno - Até 10 Kg</option>
+</select>
+
+<br> <br>
+
+<label>Unidade do Abrigo para visita</label>
+
+<select name="Unidade">
+<option value="Unidade Centro">UnidadeCentro</option>
+<option value="Unidade Leste">UnidadeLeste</option>
+<option value="Unidade Oeste">UnidadeOeste</option>
+<option value="Unidade Sul">UnidadeSul</option>
+<option value="Unidade Norte">UnidadeNorte</option>
+
+<br> <br>
+
+<label>Cuidados que você pode oferecer:</label>
+<input type="checkbox" name="cuidados" value="Passeiosdiários"> Passeios Diários
+<input type="checkbox" name="cuidados" value="Vacinaçãoemdia"> Vacinação em Dia
+<input type="checkbox" name="cuidados" value="Castração"> Castração
+<input type="checkbox" name="cuidados" value="AcompanhamentoVeterinário"> Acompanhamento Veterinário
+
+<br> <br>
+
+<label>Conte sobre sua rotina e sua experiência com animais: </label><br>
+<textarea name="mensagem" rows="5" cols="40"></textarea>
+
+<br> <br>
+
+<input type="file" name="arquivos" >
+
+<br> <br>
+
+<input type="submit" value="Enviar Cadastro"> 
+<button type="reset">Limpar Formulário</button>
+
+<br> <br> 
+
+<h1>Precisa de orientação?</h1>
+
+
+    </body>
+</html>
