@@ -1,0 +1,61 @@
+html body {
+    background-color: #ededed;
+}
+body {
+    background: #ededed;
+}
+body {
+    min-width: 920px;
+}
+html, body {
+    font-size: 13px;
+}
+body {
+    border-collapse: collapse;
+    display: table;
+    background-color: #fff;
+    font-family: "Proxima Nova", -apple-system, Roboto, Arial, sans-serif, sans-serif;
+    table-layout: fixed;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+@supports (display: flex) {
+    body, [role=main] {
+        padding: 0 !important;
+    }
+}
+@supports (display: flex) {
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        height: auto;
+    }
+}
+*, main {
+    -webkit-font-smoothing: antialiased;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+body {
+    display: block;
+    margin: 8px;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+::selection {
+    background: rgba(0, 0, 0, .1);
+}
+::selection {
+    background: rgba(0, 0, 0, .1);
+}
