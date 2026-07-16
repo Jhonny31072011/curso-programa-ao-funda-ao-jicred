@@ -9,13 +9,13 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-
+       
 
        <header>
         <h1>Desafio HTML: Portal Jovem Programador</h1>
         <p>Observe esta página no navegador e tente recriar o código HTML o mais parecido possível.</p>
         
-        <nav>
+    <nav>
 
         <a href="#sobre" >Sobre |</a>
             
@@ -24,7 +24,8 @@
         <a href="#agenda" >Agenda |</a>
              
         <a href="#contato" >Contato </a>
-        </nav>
+       
+    </nav>
 
        </header>
         
@@ -60,33 +61,68 @@
             </ol>
         </section>
 
+         <section id="agenda">
+        <h2>Agenda da Semana</h2>
 
-  <section id="agenda">
+        <table border="1" cellpadding="8" cellspacing="0">
+          <tr>
+            <th>Dia</th>
+            <th>Tema</th>
+            <th>Atividade</th>
+            <th>Status</th>
+          </tr>
+          <tr>
+            <td>Segunda</td>
+            <td>Listas e textos</td>
+            <td>Criar uma página de leitura</td>
+            <td>Concluído</td>
+          </tr>
+          <tr>
+            <td>Quarta</td>
+            <td>Tabelas</td>
+            <td>Montar um cronograma</td>
+            <td>Em andamento</td>
+          </tr>
+          <tr>
+            <td>Sexta</td>
+            <td>Semântica</td>
+            <td>Organizar uma página completa</td>
+            <td>A fazer</td>
+          </tr>
+        </table>
+      </section>
 
-    <h2>Agenda da Semana</h2>
+    <section>
+        <h2>Notícias do Portal</h2>
+        <section>
+            <h3>Alunos criam suas primeiras páginas</h3>
+            <p>A turma praticou títulos, parágrafos, listas e imagens para criar páginas simples com conteúdo organizado.</p>
+            <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML">Consultar Documentação HTML</a>
+        </section>
+    </section>
 
-    <table border="1" cellpading="8" cellspacing="0">
-        <tbody>
-            <tr>
-                <th>Dia</th>
-                <th>Tema</th>
-                <th>Atividade</th>
-                <th>Status</th>
-            </tr>
-            <tr>
-                <th>Segunda</th>
-                <th>Listas e textos</th>
-                <th>Criar uma página de leitura</th>
-                <th>Concluído</th>
-            </tr>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-        </tbody>
+    <section>
+        <h3>Dica da semana</h3>
+        <p>Use tags semânticas sempre que possível. Elas deixam o código mais claro para pessoas, navegadores e leitores de tela.</p>
+    </section>
 
-        <script src="" async defer></script>
+    <section>
+        <h2>Regras do Desafio</h2>
+            <ul>
+                <li>Recrie a página sem copiar o código original.</li>
+                <li>Use indentação para organizar o HTML.</li>
+                <li>Confira se os links, imagens, listas e tabela aparecem corretamente.</li>
+                <li>Não precisa usar CSS nesta atividade.</li>
+            </ul>
+    </section>
+    
+</main>
+   
+    <footer id="contato">
+        <h2>Contato</h2>
+        <p>Projeto criado para prática de HTML no curso de programação da Fundação Sonho Meu.</p>
+        <p>Página de referência:<i>replicar o visual e tentar acertar o código.</i></p>
+    </footer>
+    
     </body>
 </html>
