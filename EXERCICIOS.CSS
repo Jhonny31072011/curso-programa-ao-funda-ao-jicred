@@ -1,0 +1,85 @@
+/*Exercício 1*/
+
+/*
+1. Seletor Utilizado.titulo (seletor de classe).
+2. Propriedadescolorfont-size
+3. Valores Definidos red 32px
+*/ 
+/*Antigo*/
+/*
+p {
+color: blue
+font-size 16px
+*/
+/*Novo*/
+
+
+
+/* 1.Título de verde */
+h1 {
+    color: rgb(0, 0, 0);
+    text-align:center;
+}
+
+.quadro {
+  width: 300px;
+  padding: 15px;
+  border: 3px solid rgb(0, 0, 0);
+  margin: 0 auto 20px auto; /* Centraliza o quadro na página */
+  text-align: center;       /* Centraliza o texto dentro do quadro */
+}
+
+.caixinha
+{
+width: 150px;
+padding:10;
+border: 2px solid rgb(0, 0, 0);
+margin: 0 auto 20px auto;
+text-align: center;
+}
+
+/* 2 e 3. Parágrafo com classe destaque */
+.destaque {
+    font-size: 20px;     /* Aumenta o tamanho da fonte para 20px */
+    text-align: center;   /* Alinha o texto ao centro*/
+}
+
+p {
+color: rgb(0, 0, 0);
+font-size: 16px;
+text-align:center;
+}
+
+
+
+
+/*Exercícios Box Model*/
+/*Você tem o seguinte código CSS:*/
+
+
+/*Espaço Ocupado 184 Px*/
+
+/*
+O Box Model é o modelo de CAIXA do CSS. Cada elemento na
+página é tratado como uma CAIXA "INVISÍVEL". Ele é composto por quatro
+partes: conteúdo,PREENCHIMENTO, borda e MARGEM.
+*/
+
+/*
+Crie um estilo CSS para a seguinte*/
+
+
+/*
+<div class="quadro">Mensagem importante</div>
+*/
+
+/*
+1. Ter largura de 300px;
+2.
+Ter padding interno de 15px;
+3.
+Ter borda sólida vermelha de 3px;
+4.
+Ter margem inferior de 20px.
+*/
+
