@@ -83,3 +83,25 @@ Ter borda sólida vermelha de 3px;
 Ter margem inferior de 20px.
 */
 
+
+
+/*
+1-B
+2-A
+3-C
+4-D
+*/
+
+.frase {
+    font-family: "Georgia";
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
+}
+
+h1 {
+    color: green;
+    font-size: 24px;
+    text-align: center;
+}
+
