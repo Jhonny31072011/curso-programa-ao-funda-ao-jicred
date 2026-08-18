@@ -21,6 +21,11 @@ h1 {
     text-align:center;
 }
 
+@media (max-width: 600px) {
+    h1 {
+        font-size: 18px; /* Reduz o tamanho da fonte para 18px em telas menores */
+    }
+}
 .quadro {
   width: 300px;
   padding: 15px;
