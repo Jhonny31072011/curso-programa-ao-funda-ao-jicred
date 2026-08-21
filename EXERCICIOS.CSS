@@ -55,7 +55,38 @@ font-size: 16px;
 text-align:center;
 }
 
+.container {
+display: flex;
+}
+.item {
+width: 100px;
+height: 100px;
+background-color: skyblue;
+margin: 5px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
 
+.container {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 10px;
+}
+.item {
+background-color: lightcoral;
+height: 100px;
+text-align: center;
+line-height: 100px;
+font-weight: bold;
+}/*2.*/
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Ou: repeat(3, 1fr) */
+    grid-template-rows: 100px 100px;    /* Ou: repeat(2, 100px) */
+    gap: 10px;
+}
 
 
 /*Exercícios Box Model*/
