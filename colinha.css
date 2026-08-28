@@ -101,7 +101,11 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 8px;
-      }
+        gap: 10px;
+        flex-direction:row;
+}
+
+      
 
       
       
@@ -234,10 +238,8 @@
           grid-template-columns: 1fr 1fr;
         }
 
-        .flex-linha {
-          flex-direction: column;
-          align-items: flex-start;
-        }
+       
+     
         .topico-descricao {
   margin-bottom: 8px;
   color: #4b5563;
