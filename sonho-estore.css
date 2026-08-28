@@ -1,0 +1,182 @@
+.topo
+{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ffffff;
+        padding: 16px 32px;
+        border-bottom: 2px solid #e5e7eb;
+      }
+
+      .topo-linha {
+        display: flex;
+        align-items: center;
+      }
+
+      .marca {
+        display: flex;
+        align-items: center;
+      }
+
+      .marca-icone {
+        display: block;
+        width: 42px;
+        height: 42px;
+        background-color: #16a34a;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 42px;
+        border-radius: 12px;
+        margin-right: 12px;
+      }
+
+      .marca-nome {
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      .marca-texto {
+        display: block;
+        font-size: 13px;
+        color: #6b7280;
+      }
+
+      .perfil {
+        display: flex;
+        align-items: center;
+      }
+
+      .perfil-mobile {
+        display: none;
+      }
+
+      .perfil-dados {
+        text-align: right;
+        margin-right: 12px;
+      }
+
+      .perfil-nome {
+        display: block;
+        font-size: 15px;
+        font-weight: bold;
+      }
+
+      .perfil-cargo {
+        display: block;
+        font-size: 12px;
+        color: #6b7280;
+      }
+
+      .perfil-foto {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: 2px solid #16a34a;
+      }
+
+      
+      @media (max-width: 900px) {
+        .topo {
+          display: block;
+          padding: 16px;
+        }
+
+        .topo-linha {
+          justify-content: space-between;
+        }
+
+        .perfil-desktop {
+          display: none;
+        }
+
+        .perfil-mobile {
+          display: flex;
+        }
+      }
+   
+      .rodape-texto {
+        font-size: 14px;
+      }
+      .aviso{
+        background-color: #fef3c7;
+        color: #92400e;
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+    
+   
+      
+    .rodape-sonho-store {
+        font-size: 14px;
+        background-color: #1f2937;
+        color: #e5e7eb;
+        font-size: 14px;
+        text-align: center;
+        padding: 20px;
+      }
+      .busca{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+        gap: 1px;
+        flex-direction:row;
+        border-radius: 20px; /* Altere o valor para mais ou menos arredondado */
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        outline: none;
+}
+.filtro-botao 
+    {
+        display: flex;
+        background-color: #ffffff;
+        color: #14a34a;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        padding: 14px 32px;
+        margin-bottom: 24px;
+        border-bottom: 2px solid #ffffff;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+
+    }
+    .filtro-botao:hover 
+    {
+        background-color: #14a34a;
+        color: #ffffff;
+    }
+  
+        
+      .campo-busca {
+        width: 100%;
+        height: 44px;
+        font-size: 15px;
+        padding: 10px 44px 10px 16px;
+        border: 2px solid #e5e7eb;
+        border-radius: 22px;
+        background-color: #f3f4f6;
+      }
+
+      .icone-lupa {
+        position: absolute;
+        top: 10px;
+        right: 16px;
+        font-size: 18px;
+      }
+
+    
+      
+
+     
+      
+     
+   
+
