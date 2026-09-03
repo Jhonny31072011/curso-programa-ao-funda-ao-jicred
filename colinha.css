@@ -234,17 +234,18 @@
         font-size: 14px;
       }
 
-        .grade {
-          grid-template-columns: 1fr 1fr;
+      .grade {
+      grid-template-columns: 1fr 1fr;
         }
 
        
      
         .topico-descricao {
-  margin-bottom: 8px;
+      margin-bottom: 8px;
   color: #4b5563;
-}
-.texto-normal {
-  margin-bottom: 6px;
-}
-
+      }
+      .texto-normal {
+      margin-bottom: 6px;
+    color: #4b5563;
+      }
+     

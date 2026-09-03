@@ -1,182 +1,332 @@
-.topo
-{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #ffffff;
-        padding: 16px 32px;
-        border-bottom: 2px solid #e5e7eb;
-      }
-
-      .topo-linha {
-        display: flex;
-        align-items: center;
-      }
-
-      .marca {
-        display: flex;
-        align-items: center;
-      }
-
-      .marca-icone {
-        display: block;
-        width: 42px;
-        height: 42px;
-        background-color: #16a34a;
-        color: #ffffff;
-        font-size: 20px;
-        font-weight: bold;
-        text-align: center;
-        line-height: 42px;
-        border-radius: 12px;
-        margin-right: 12px;
-      }
-
-      .marca-nome {
-        font-size: 22px;
-        font-weight: bold;
-      }
-
-      .marca-texto {
-        display: block;
-        font-size: 13px;
-        color: #6b7280;
-      }
-
-      .perfil {
-        display: flex;
-        align-items: center;
-      }
-
-      .perfil-mobile {
-        display: none;
-      }
-
-      .perfil-dados {
-        text-align: right;
-        margin-right: 12px;
-      }
-
-      .perfil-nome {
-        display: block;
-        font-size: 15px;
-        font-weight: bold;
-      }
-
-      .perfil-cargo {
-        display: block;
-        font-size: 12px;
-        color: #6b7280;
-      }
-
-      .perfil-foto {
-        width: 46px;
-        height: 46px;
-        border-radius: 50%;
-        border: 2px solid #16a34a;
-      }
-
-      
-      @media (max-width: 900px) {
-        .topo {
-          display: block;
-          padding: 16px;
-        }
-
-        .topo-linha {
-          justify-content: space-between;
-        }
-
-        .perfil-desktop {
-          display: none;
-        }
-
-        .perfil-mobile {
-          display: flex;
-        }
-      }
-   
-      .rodape-texto {
-        font-size: 14px;
-      }
-      .aviso{
-        background-color: #fef3c7;
-        color: #92400e;
-        padding: 12px 16px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-      }
-    
-   
-      
-    .rodape-sonho-store {
-        font-size: 14px;
-        background-color: #1f2937;
-        color: #e5e7eb;
-        font-size: 14px;
-        text-align: center;
-        padding: 20px;
-      }
-      .busca{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 8px;
-        gap: 1px;
-        flex-direction:row;
-        border-radius: 20px; /* Altere o valor para mais ou menos arredondado */
-        padding: 10px 15px;
-        border: 1px solid #ccc;
-        outline: none;
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 16px 32px;
+  border-bottom: 2px solid #e5e7eb;
 }
-.filtro-botao 
-    {
-        display: flex;
-        background-color: #ffffff;
-        color: #14a34a;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 20px;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: row;
-        padding: 14px 32px;
-        margin-bottom: 24px;
-        border-bottom: 2px solid #ffffff;
-        font-size: 16px;
-        font-weight: bold;
-        font-family: Arial, sans-serif;
 
-    }
-    .filtro-botao:hover 
-    {
-        background-color: #14a34a;
-        color: #ffffff;
-    }
-  
-        
-      .campo-busca {
-        width: 100%;
-        height: 44px;
-        font-size: 15px;
-        padding: 10px 44px 10px 16px;
-        border: 2px solid #e5e7eb;
-        border-radius: 22px;
-        background-color: #f3f4f6;
-      }
+.topo-linha {
+  display: flex;
+  align-items: center;
+}
 
-      .icone-lupa {
-        position: absolute;
-        top: 10px;
-        right: 16px;
-        font-size: 18px;
-      }
+.marca {
+  display: flex;
+  align-items: center;
+}
 
-    
-      
+.marca-icone {
+  display: block;
+  width: 42px;
+  height: 42px;
+  background-color: #16a34a;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 42px;
+  border-radius: 12px;
+  margin-right: 12px;
+}
 
-     
-      
-     
-   
+.marca-nome {
+  font-size: 22px;
+  font-weight: bold;
+}
 
+.marca-texto {
+  display: block;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+}
+
+.perfil-mobile {
+  display: none;
+}
+
+.perfil-dados {
+  text-align: right;
+  margin-right: 12px;
+}
+
+.perfil-nome {
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.perfil-cargo {
+  display: block;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.perfil-foto {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid #16a34a;
+}
+
+
+@media (max-width: 900px) {
+  .topo {
+    display: block;
+    padding: 16px;
+  }
+
+  .topo-linha {
+    justify-content: space-between;
+  }
+
+  .perfil-desktop {
+    display: none;
+  }
+
+  .perfil-mobile {
+    display: flex;
+  }
+}
+
+.rodape-texto {
+  font-size: 14px;
+}
+
+.aviso {
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+
+
+.rodape-sonho-store {
+  font-size: 14px;
+  background-color: #1f2937;
+  color: #e5e7eb;
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+}
+
+.busca {
+  width: 100%;
+  height: 45px;
+  /* Altura da barra */
+  padding: 0 15px 0 45px;
+  /* Espaço de 45px na esquerda para não cobrir o texto */
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  /* Cantos arredondados */
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.filtro-botao {
+  display: flex;
+  background-color: #ffffff;
+  color: #14a34a;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 14px 32px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+
+}
+
+.filtro-botao:hover {
+  background-color: #14a34a;
+  color: #ffffff;
+}
+
+
+.busca-campo {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333333;
+  outline: none;
+  /* Remove a borda "normal" ao clicar */
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  /* Ajuste a largura máxima dependendo do jeito que vc quer deixar */
+  background-color: #f1f3f5;
+  /* Fundo cinza claro idêntico ao da imagem */
+  border: 2px solid #000000;
+  /* Borda preta sólida */
+  border-radius: 25px;
+  /* Cantos arredondados */
+  padding: 8px 16px;
+  box-sizing: border-box;
+}
+
+
+
+
+/* O Ícone da Lupa */
+.icone-lupa .busca-lupa {
+  position: absolute;
+  left: 10px;
+  top: 10px
+}
+
+.filtros {
+  display: flex;
+  background-color: #ffffff;
+  color: #14a34a;
+  border: none;
+  border-radius: 10px;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 7px 16px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+.titulo-secao {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.card {
+  display: block;
+  background-color: #ffffff;
+  padding: 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+}
+
+.card-foto {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  cursor: grab;
+  -webkit-user-drag: element;
+}
+
+.card-tag {
+  display: inline-block;
+  background-color: #dcfce7;
+  color: #166534;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.card-nome {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.card-descricao {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.card-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-preco {
+  font-size: 20px;
+  font-weight: bold;
+  color: #16a34a;
+}
+
+.card-botao {
+  background-color: #1f2937;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.escondido {
+  display: none;
+}
+
+.aviso {
+  display: none;
+  background-color: #fff7ed;
+  color: #9a3412;
+  font-size: 16px;
+  text-align: center;
+  padding: 30px;
+  border: 2px dashed #fdba74;
+  border-radius: 16px;
+}
+
+.aviso-visivel {
+  display: block;
+}
+
+.rodape {
+  background-color: #1f2937;
+  color: #e5e7eb;
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+}
+
+@media (max-width: 900px) {}
+
+.lista {
+  grid-template-columns: 1fr 1fr;
+}
+
+.topo {
+  display: block;
+  padding: 16px;
+}
+
+.topo-linha {
+  justify-content: space-between;
+}
+
+.busca {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.perfil-desktop {
+  display: none;
+}
+
+.perfil-mobile {
+  display: flex;
+}
