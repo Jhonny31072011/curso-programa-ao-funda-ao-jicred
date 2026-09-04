@@ -118,19 +118,7 @@
   padding: 20px;
 }
 
-.busca {
-  width: 100%;
-  height: 45px;
-  /* Altura da barra */
-  padding: 0 15px 0 45px;
-  /* Espaço de 45px na esquerda para não cobrir o texto */
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  /* Cantos arredondados */
-  outline: none;
-  transition: border-color 0.2s ease;
-}
+
 
 .filtro-botao {
   display: flex;
@@ -184,12 +172,6 @@
 
 
 
-/* O Ícone da Lupa */
-.icone-lupa .busca-lupa {
-  position: absolute;
-  left: 10px;
-  top: 10px
-}
 
 .filtros {
   display: flex;
@@ -215,11 +197,12 @@
 }
 
 .card {
-  display: block;
+  display: flex;
   background-color: #ffffff;
   padding: 14px;
   border: 2px solid #e5e7eb;
   border-radius: 16px;
+  flex-direction: column;
 }
 
 .card-foto {
@@ -240,6 +223,7 @@
   padding: 4px 10px;
   border-radius: 10px;
   margin-bottom: 8px;
+  ;
 }
 
 .card-nome {
@@ -306,7 +290,9 @@
 @media (max-width: 900px) {}
 
 .lista {
-  grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
 }
 
 .topo {
@@ -330,3 +316,104 @@
 .perfil-mobile {
   display: flex;
 }
+.caixa-posicao {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* 1. Cria a "parede" de contenção */
+.caixa-posicao {
+  position: relative; /* FUNDAMENTAL: Diz que os filhos absolutos não podem sair daqui */
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Container principal do Header */
+.topo {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-sizing: border-box;
+}
+
+/* Em telas pequenas (Celular): mantém o layout empilhado original */
+.topo-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.perfil-mobile {
+  display: flex;
+  align-items: center;
+}
+
+.perfil-desktop {
+  display: none; /* Esconde o perfil desktop no celular */
+}
+
+/* 
+   AQUI ELE MODIFICA O TAMANHO PARA COMPUTADOR / TELAS MAIORES (Desktop)
+   */
+@media (min-width: 768px) {
+  /* Transforma o topo inteiro em uma única linha horizontal */
+  .topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px; /* Espaçamento entre os blocos */
+  }
+
+  /* O topo-linha interno deixa de ser necessário no desktop, 
+     então fazemos os filhos diretos do .topo alinharem juntos */
+  .topo-linha {
+    width: auto; /* Deixa a logo ocupar apenas o espaço dela */
+  }
+
+  .perfil-mobile {
+    display: none; /* Esconde a versão mobile do perfil */
+  }
+
+  /* Barra de busca ganha flexibilidade para ocupar o centro */
+  .busca {
+    position: relative;
+    flex: 1;             /* Faz a barra de busca crescer e ocupar o espaço livre do meio */
+    max-width: 500px;    /* Aumenta um pouco o limite no desktop se quiser */
+    margin: 0 auto;      /* Centraliza perfeitamente no espaço disponível */
+    display: flex;
+    align-items: center;
+  }
+
+  /* Mostra o perfil do desktop à direita */
+  .perfil-desktop {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Estilos internos da busca (mantidos) */
+.busca-campo {
+  width: 100%;
+  height: 44px;
+  font-size: 15px;
+  padding: 10px 44px 10px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 22px;
+  background-color: #f3f4f6;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.icone-lupa {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #6b7280;
+  pointer-events: none;
+}
+
