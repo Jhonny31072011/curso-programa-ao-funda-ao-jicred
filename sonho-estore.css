@@ -211,6 +211,10 @@
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 12px;
+
+
+
+  
   cursor: grab;
   -webkit-user-drag: element;
 }
@@ -223,7 +227,7 @@
   padding: 4px 10px;
   border-radius: 10px;
   margin-bottom: 8px;
-  ;
+  
 }
 
 .card-nome {
