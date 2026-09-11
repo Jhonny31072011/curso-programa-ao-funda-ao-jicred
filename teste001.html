@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercícios Convertidos</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 20px;
+        background: #f4f4f9;
+        color: #333;
+      }
+      .box {
+        background: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      input[type="text"],
+      input[type="number"] {
+        padding: 8px;
+        width: 280px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        display: block;
+      }
+      button {
+        padding: 10px 15px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      button:hover {
+        background: #0056b3;
+      }
+      pre {
+        background: #eee;
+        padding: 10px;
+        border-radius: 4px;
+        min-height: 40px;
+        overflow-y: auto;
+        margin-top: 15px;
+        font-weight: bold;
+      }
+      span {
+        font-size: 0.9em;
+        color: #666;
+        display: block;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Exercícios de Vetores em JavaScript</h1>
+
+    <!-- EXERCÍCIO 1 -->
+    <div class="box">
+      <h3>1. Quadrado dos elementos (5 números)</h3>
+      <span>Digite os números separados por vírgula (ex: 2, 5, 7, 3, 9):</span>
+      <input type="text" id="dados1" value="2, 5, 7, 3, 9" />
+      <button onclick="executarQuadrados()">Calcular Quadrados</button>
+      <pre id="resultado1">O resultado aparecerá aqui...</pre>
+    </div>
+
+    <!-- EXERCÍCIO 2 -->
+    <div class="box">
+      <h3>2. Soma dos números pares (8 números)</h3>
+      <span
+        >Digite os números separados por vírgula (ex: 1, 2, 3, 4, 5, 6, 7,
+        8):</span
+      >
+      <input type="text" id="dados2" value="1, 2, 3, 4, 5, 6, 7, 8" />
+      <button onclick="executarSomaPares()">Somar Pares</button>
+      <pre id="resultado2">O resultado aparecerá aqui...</pre>
+    </div>
+
+    <!-- EXERCÍCIO 3 -->
+    <div class="box">
+      <h3>3. Pesquisa no vetor (10 números)</h3>
+      <span>Digite os 10 números do vetor separados por vírgula:</span>
+      <input
+        type="text"
+        id="dados3"
+        value="10, 20, 30, 40, 50, 60, 70, 80, 90, 100"
+      />
+      <span>Número a ser pesquisado:</span>
+      <input type="number" id="pesquisa3" value="50" />
+      <button onclick="executarPesquisa()">Pesquisar Número</button>
+      <pre id="resultado3">O resultado aparecerá aqui...</pre>
+    </div>
+
+    <!-- EXERCÍCIO 4 -->
+    <div class="box">
+      <h3>4. Substituir negativos por zero (10 números)</h3>
+      <span
+        >Digite os números separados por vírgula (coloque alguns
+        negativos):</span
+      >
+      <input
+        type="text"
+        id="dados4"
+        value="5, -3, 12, -8, 0, 7, -1, 4, 9, -6"
+      />
+      <button onclick="executarSubstituicao()">Substituir Negativos</button>
+      <pre id="resultado4">O resultado aparecerá aqui...</pre>
+    </div>
+
+    <!-- EXERCÍCIO 5 -->
+    <div class="box">
+      <h3>5. Soma de dois vetores (5 números cada)</h3>
+      <span>Vetor 1 (5 números separados por vírgula):</span>
+      <input type="text" id="vetorA" value="1, 2, 3, 4, 5" />
+      <span>Vetor 2 (5 números separados por vírgula):</span>
+      <input type="text" id="vetorB" value="10, 20, 30, 40, 50" />
+      <button onclick="executarSomaVetores()">Somar Vetores</button>
+      <pre id="resultado5">O resultado aparecerá aqui...</pre>
+    </div>
+
+    <script>
+      // Função auxiliar para converter o texto da caixa em um array de números válidos
+      function obterArray(idInput) {
+        let texto = document.getElementById(idInput).value;
+        // Divide por vírgula e converte cada parte para número eliminando espaços em branco
+        return texto
+          .split(",")
+          .map((item) => parseFloat(item.trim()))
+          .filter((num) => !isNaN(num));
+      }
+
+      // 1. Quadrado dos elementos
+      function ejecutarQuadrados() {
+        let numeros = obterArray("dados1");
+        let saida = "Quadrado dos elementos:\n";
+
+        for (let num of numeros) {
+          saida += `${num}² = ${num * num}\n`;
+        }
+        document.getElementById("resultado1").innerText = saida;
+      }
+
+      // 2. Soma dos números pares
+      function executarSomaPares() {
+        let numeros = obterArray("dados2");
+        let somaPares = 0;
+
+        for (let num of numeros) {
+          if (num % 2 === 0) {
+            somaPares += num;
+          }
+        }
+        document.getElementById("resultado2").innerText =
+          `A soma de todos os números pares é: ${somaPares}`;
+      }
+
+      // 3. Pesquisa no vetor
+      function executarPesquisa() {
+        let numeros = obterArray("dados3");
+        let pesquisa = parseFloat(document.getElementById("pesquisa3").value);
+
+        let encontrado = numeros.includes(pesquisa);
+
+        if (encontrado) {
+          document.getElementById("resultado3").innerText =
+            "O número está no vetor.";
+        } else {
+          document.getElementById("resultado3").innerText =
+            "O número NÃO está no vetor.";
+        }
+      }
+
+      // 4. Substituir números negativos por zero
+      function executarSubstituicao() {
+        let numeros = obterArray("dados4");
+        let saida = "Vetor modificado:\n";
+
+        for (let i = 0; i < numeros.length; i++) {
+          if (numeros[i] < 0) {
+            numeros[i] = 0;
+          }
+          saida += `Posição [${i}]: ${numeros[i]}\n`;
+        }
+        document.getElementById("resultado4").innerText = saida;
+      }
+
+      // 5. Soma de dois vetores
+      function executarSomaVetores() {
+        let v1 = obterArray("vetorA");
+        let v2 = obterArray("vetorB");
+        let saida = "--- Vetor Resultante (Soma) ---\n";
+
+        // Pega o menor tamanho caso os vetores digitados tenham tamanhos diferentes
+        let tamanho = Math.min(v1.length, v2.length);
+
+        for (let i = 0; i < tamanho; i++) {
+          let resultado = v1[i] + v2[i];
+          saida += `${v1[i]} + ${v2[i]} = ${resultado}\n`;
+        }
+        document.getElementById("resultado5").innerText = saida;
+      }
+    </script>
+  </body>
+</html>
