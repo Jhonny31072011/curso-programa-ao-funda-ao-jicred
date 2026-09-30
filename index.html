@@ -1,22 +1,25 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfólio - Jhonny Victor</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Meu Portfólio | Jhonny Victor</title>
+    <meta
+      name="description"
+      content="Portfólio pessoal de Jhonny Victor, desenvolvedor focado em C# e JavaScript."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Cabeçalho / Menu de Navegação -->
+    <!-- Cabeçalho de Navegação -->
     <header>
+      <h1>Meu Portfólio</h1>
       <nav>
-        <ul>
-          <li><a href="#home">Bem-Vindo</a></li>
-          <li><a href="#sobre">Sobre Mim</a></li>
-          <li><a href="#portfolio">Portfólio</a></li>
-          <li><a href="#contato">Contato</a></li>
-          <li><a href="#projetos">Projetos</a></li>
-        </ul>
+        <a href="#home">Início</a>
+        <a href="#sobre">Sobre Mim</a>
+        <a href="#portfolio">Projetos</a>
+        <a href="#contato">Contato</a>
       </nav>
     </header>
 
@@ -24,19 +27,22 @@
       <!-- Seção Principal / Perfil -->
       <section id="home" class="perfil-section">
         <div class="perfil-container">
-          <img src="sua-foto.jpg" alt="Foto de Jhonny Victor" class="avatar" />
+          <img
+            src="jhonnyvictor.jpeg"
+            alt="Foto de Jhonny Victor"
+            class="avatar"
+          />
           <div class="info-principal">
-            <h1>JHONNY VICTOR</h1>
-            <p class="tag">@dev_jhow</p>
+            <h2>JHONNY VICTOR</h2>
+            <p class="tag">@jhonny_v.dev</p>
             <p class="localizacao">Brasil - Ji-Paraná, RO</p>
           </div>
         </div>
-
         <div class="apresentacao">
           <p>
-            OLÁ EU SOU UM DESENVOLVEDOR FOCADO PRINCIPALMENTE EM C# E JAVA
-            SCRIPT, TAMBÉM USO HTML E CSS PARA CONSTRUIR DESDE ALGUMAS
-            INTERFACES GRÁFICAS ATÉ SITES COMPLEXOS COM ANIMAÇÕES E ETC.
+            OLÁ! EU SOU UM DESENVOLVEDOR FOCADO PRINCIPALMENTE EM C# E
+            JAVASCRIPT. TAMBÉM USO HTML E CSS PARA CONSTRUIR DESDE INTERFACES
+            GRÁFICAS ATÉ SITES COMPLEXOS COM ANIMAÇÕES.
           </p>
         </div>
       </section>
@@ -45,13 +51,16 @@
 
       <!-- Seção: O Que Faço Atualmente -->
       <section id="sobre" class="conteudo-section">
-        <h2>O Que Faço Atualmente</h2>
+        <h2>Sobre Mim & O Que Faço Atualmente</h2>
         <div class="caixa-texto">
           <p>
-            Atualmente tenho 15 anos estou no 1° ano do Ensino Médio estudo no
-            IFRO o curso de Informática e também faço curso de programação à
-            noite e estudo na Fundação Ji-Cred/Sicoob tenho Print's de alguns
-            códigos de repositórios do meu Gith.
+            Tenho 15 anos e estou no 1º ano do Ensino Médio. Estudo no IFRO
+            (Instituto Federal de Rondônia) no curso de Informática, faço curso
+            de programação à noite e também estudo na Fundação Ji-Cred.
+          </p>
+          <p>
+            Sou dedicado, curioso e sempre em busca de aprender mais sobre
+            desenvolvimento web e outras tecnologias.
           </p>
         </div>
       </section>
@@ -60,42 +69,61 @@
 
       <!-- Seção: Projetos / Prints do GitHub -->
       <section id="portfolio" class="projetos-section">
-        <h2>Fundação Ji-Cred</h2>
-        <div class="print-container">
-          <img src="print-github-1.png" alt="Print do repositório no GitHub" />
+        <h2>Meus Projetos (GitHub)</h2>
+
+        <div class="projeto-item">
+          <h3>Fundação Ji-Cred</h3>
+          <div class="print-container">
+            <img
+              src="print-github-1.png"
+              alt="Print do repositório da Fundação Ji-Cred no GitHub"
+            />
+          </div>
         </div>
 
-        <h2>IFRO</h2>
-        <div class="print-container">
-          <img src="print-github-2.png" alt="Print do repositório no GitHub" />
+        <div class="projeto-item">
+          <h3>IFRO</h3>
+          <div class="print-container">
+            <img
+              src="print-github-2.png"
+              alt="Print do repositório do IFRO no GitHub"
+            />
+          </div>
         </div>
       </section>
-
-      <hr />
-
-      <!-- Rodapé / Contatos -->
-      <footer id="contato">
-        <h2>Vamos Conversar</h2>
-        <p>
-          Entre em contato comigo por meio das redes sociais ou envie qualquer
-          tipo de dúvidas ou críticas.
-        </p>
-
-        <div class="redes-sociais">
-          <a href="#" aria-label="Medium"
-            ><img src="icon-medium.png" alt="Medium"
-          /></a>
-          <a href="#" aria-label="Instagram"
-            ><img src="icon-instagram.png" alt="Instagram"
-          /></a>
-          <a href="#" aria-label="E-mail"
-            ><img src="icon-email.png" alt="E-mail"
-          /></a>
-          <a href="#" aria-label="GitHub"
-            ><img src="icon-github.png" alt="GitHub"
-          /></a>
-        </div>
-      </footer>
     </main>
+
+    <hr />
+
+    <!-- Rodapé / Contatos -->
+    <footer id="contato">
+      <h2>Vamos Conversar?</h2>
+      <p>
+        Entre em contato comigo por meio das redes sociais ou envie suas dúvidas
+        e críticas.
+      </p>
+
+      <div class="redes-sociais">
+        <a href="https://medium.com/@jhonnytrindade44" aria-label="Medium"
+          ><img src="icon-medium.png" alt="Medium"
+        /></a>
+        <a href="https://www.instagram.com/jhonny_v.dev" aria-label="Instagram"
+          ><img src="icon-instagram.png" alt="Instagram"
+        /></a>
+        <a
+          href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox"
+          aria-label="E-mail"
+          ><img src="icon-email.png" alt="E-mail"
+        /></a>
+        <a href="https://github.com/Jhonny31072011" aria-label="GitHub"
+          ><img src="icon-github.png" alt="GitHub"
+        /></a>
+      </div>
+      <p class="copyright">
+        &copy; 2026 Jhonny Victor. Todos os direitos reservados.
+      </p>
+    </footer>
+
+    <script src="script.js" async defer></script>
   </body>
 </html>
