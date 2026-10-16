@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. RESETS GLOBAIS E ESTILOS DA PÁGINA
-   ========================================================================== */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -24,9 +22,7 @@ hr {
 }
 
 
-/* ==========================================================================
-   2. CABEÇALHO E NAVEGAÇÃO
-   ========================================================================== */
+
 header {
   padding: 20px 0;
 }
@@ -60,9 +56,6 @@ header {
 }
 
 
-/* ==========================================================================
-   3. SEÇÃO PRINCIPAL (PERFIL / APRESENTAÇÃO)
-   ========================================================================== */
 .perfil-section {
   padding: 40px 20px;
   display: flex;
@@ -117,9 +110,6 @@ header {
 }
 
 
-/* ==========================================================================
-   4. SEÇÕES DE CONTEÚDO E PROJETOS
-   ========================================================================== */
 .conteudo-section, 
 .projetos-section {
   width: 100%;
@@ -180,9 +170,7 @@ header {
 }
 
 
-/* ==========================================================================
-   5. SEÇÃO DE CONTATOS / REDES SOCIAIS (RODAPÉ)
-   ========================================================================== */
+
 #contato {
   text-align: center;
   padding-bottom: 40px;
@@ -192,7 +180,7 @@ header {
   margin-bottom: 10px;
 }
 
-/* Texto descritivo do rodapé */
+
 .footer-description {
   color: #ffffff;
   font-size: 14px;
@@ -205,25 +193,24 @@ header {
   padding: 0 10px;
 }
 
-/* Container principal que alinha todas as redes sociais lado a lado */
+
 .social-links-container {
   display: flex;
   justify-content: center;
-  align-items: flex-end;    /* Alinha os blocos de forma uniforme pela base */
-  gap: 24px;                /* Distância entre cada bloco de rede social */
+  align-items: flex-end;   
+  gap: 24px;               
   margin-top: 30px;
 }
 
-/* Estrutura vertical de cada link (Ícone em cima, caixa branca embaixo) */
 .social-link-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-decoration: none;    /* Remove sublinhados padrões de links */
-  gap: 12px;                /* Espaço exato entre o ícone e o retângulo */
+  text-decoration: none;    
+  gap: 12px;              
 }
 
-/* Imagens dos logotipos das redes sociais */
+
 .social-icon-media {
   width: 36px;
   height: 36px;
@@ -231,45 +218,36 @@ header {
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* Aplica uma opacidade sutil ao ícone do GitHub para combinar com o layout */
+
 .github-dimmed {
   opacity: 0.6;
 }
 
-/* Retângulos brancos onde suas informações/nomes aparecem */
+
 .social-badge {
-  width: 85px;              /* Largura adequada para acomodar o texto */
+  width: 85px;             
   min-height: 24px;
   background-color: #ffffff;
-  color: #000000;           /* Texto escuro interno para contraste */
+  color: #000000;           
   font-size: 11px;
   font-weight: bold;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;      /* Cantos arredondados iguais à imagem */
+  border-radius: 12px;     
   padding: 4px 8px;
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 
-/* --------------------------------------------------------------------------
-   6. INTERAÇÕES E EFEITOS DINÂMICOS (HOVER)
-   -------------------------------------------------------------------------- */
 
-/* Quando o usuário passa o mouse por cima do conjunto do link */
 .social-link-item:hover .social-icon-media {
-  transform: scale(1.1);    /* O ícone expande suavemente */
-  opacity: 1;               /* O GitHub ganha brilho total */
+  transform: scale(1.1);    
+  opacity: 1;               
 }
 
-.social-link-item:hover .social-badge {
-  background-color: #0409ff; /* O retângulo muda para o azul de destaque */
-  color: #ffffff;            /* O texto se converte para branco */
-}
 
-/* Rodapé final dos direitos autorais */
 .copyright {
   color: #888888;
   font-size: 12px;
