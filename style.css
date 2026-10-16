@@ -1,106 +1,278 @@
+/* ==========================================================================
+   1. RESETS GLOBAIS E ESTILOS DA PÁGINA
+   ========================================================================== */
 * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000000;
-      color: #ffffff;
-    }
-    
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #000000;
-      color: #ffffff;
-    }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    /* Estilos do Perfil */
-    .perfil-section {
-      padding: 40px 20px;
-      display: flex;
-      justify-content: center;
-    }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #000000; /* Cor de fundo escura conforme o Figma */
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
 
-    .perfil-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 20px;
-    }
+hr {
+  border: 0;
+  height: 1px;
+  background: #333333;
+  margin: 40px auto;
+  max-width: 530px;
+  width: 100%;
+}
 
-  .foto-perfil {
-  width: 200px;         
-  height: 200px;         
-  object-fit: cover;     
-  border-radius: 50%;   
-  margin-bottom: 20px; 
+
+/* ==========================================================================
+   2. CABEÇALHO E NAVEGAÇÃO
+   ========================================================================== */
+header {
+  padding: 20px 0;
+}
+
+.titulo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.header-inicial {
+  font-size: 16px;
+  text-align: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.header-inicial a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.header-inicial a:hover {
+  color: #0409ff;
+}
+
+
+/* ==========================================================================
+   3. SEÇÃO PRINCIPAL (PERFIL / APRESENTAÇÃO)
+   ========================================================================== */
+.perfil-section {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.perfil-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+}
+
+.foto-perfil {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.info-principal h2 {
+  margin-bottom: 4px;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.tag {
+  color: #aaaaaa;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.localizacao {
+  color: #888888;
+  font-size: 14px;
+}
+
+.apresentacao {
+  max-width: 530px;
+  margin: 25px auto 0 auto;
+  padding: 0 10px;
+}
+
+.apresentacao p {
+  text-align: justify;
+  line-height: 1.6;
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+
+/* ==========================================================================
+   4. SEÇÕES DE CONTEÚDO E PROJETOS
+   ========================================================================== */
+.conteudo-section, 
+.projetos-section {
+  width: 100%;
+  max-width: 530px;
+  margin: 0 auto;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Blocos de projetos individuais empilhados */
+.projeto-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Cards de título brancos simulando o design do Figma */
+.figma-title-card {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  width: 100%;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+
+/* Caixa de texto preta estruturada */
+.figma-text-box {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  width: 100%;
+  padding: 28px 24px;
+  border-radius: 6px;
+  border: 1px solid #2d2d2d;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.print-container {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #444444;
+  overflow: hidden;
+  display: flex;
+}
+
+.print-container img {
+  width: 100%;
+  height: auto;
   display: block;
 }
 
 
-    
-    .titulo {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 16px;
-      text-align: center;
-    }
+/* ==========================================================================
+   5. SEÇÃO DE CONTATOS / REDES SOCIAIS (RODAPÉ)
+   ========================================================================== */
+#contato {
+  text-align: center;
+  padding-bottom: 40px;
+}
 
-    .header-inicial {
-      font-size: 16px;
-      color: #ffffff;
-      text-align: center;
-      display: flex;
-      gap: 16px;
-      justify-content: space-between;
-      padding: 20px;
-    }
+#contato h2 {
+  margin-bottom: 10px;
+}
 
-    .nav-link {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 16px;
-      transition: color 0.3s ease;
-    }
+/* Texto descritivo do rodapé */
+.footer-description {
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 25px;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 530px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
 
-    .nav-link:hover {
-      color: #ff0000;
-    }
+/* Container principal que alinha todas as redes sociais lado a lado */
+.social-links-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;    /* Alinha os blocos de forma uniforme pela base */
+  gap: 24px;                /* Distância entre cada bloco de rede social */
+  margin-top: 30px;
+}
 
-    .info-principal h2 {
-      margin-bottom: 8px;
-    }
+/* Estrutura vertical de cada link (Ícone em cima, caixa branca embaixo) */
+.social-link-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;    /* Remove sublinhados padrões de links */
+  gap: 12px;                /* Espaço exato entre o ícone e o retângulo */
+}
 
-    .tag {
-      color: #aaaaaa;
-      margin-bottom: 4px;
-    }
+/* Imagens dos logotipos das redes sociais */
+.social-icon-media {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
 
-    .localizacao {
-      color: #888888;
-      font-size: 14px;
-    }
-    .nav-inicio:hover { 
-    
-      color: #0409ff;}
-    .nav-sobre-mim:hover {
+/* Aplica uma opacidade sutil ao ícone do GitHub para combinar com o layout */
+.github-dimmed {
+  opacity: 0.6;
+}
 
-       color: #0409ff;}
-    .nav-projetos:hover { 
+/* Retângulos brancos onde suas informações/nomes aparecem */
+.social-badge {
+  width: 85px;              /* Largura adequada para acomodar o texto */
+  min-height: 24px;
+  background-color: #ffffff;
+  color: #000000;           /* Texto escuro interno para contraste */
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;      /* Cantos arredondados iguais à imagem */
+  padding: 4px 8px;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
 
-      color: #0409ff;}
-    .nav-contato:hover { 
 
-      color: #0409ff;}
+/* --------------------------------------------------------------------------
+   6. INTERAÇÕES E EFEITOS DINÂMICOS (HOVER)
+   -------------------------------------------------------------------------- */
 
-      .apresentacao {
-  max-width: 500px;      
-  margin: 0 auto;         
-  padding: 15px 0;         
-      }
-.apresentacao p {
-  text-align: justify;   
-  line-height: 1.6;       
+/* Quando o usuário passa o mouse por cima do conjunto do link */
+.social-link-item:hover .social-icon-media {
+  transform: scale(1.1);    /* O ícone expande suavemente */
+  opacity: 1;               /* O GitHub ganha brilho total */
+}
+
+.social-link-item:hover .social-badge {
+  background-color: #0409ff; /* O retângulo muda para o azul de destaque */
+  color: #ffffff;            /* O texto se converte para branco */
+}
+
+/* Rodapé final dos direitos autorais */
+.copyright {
+  color: #888888;
+  font-size: 12px;
+  margin-top: 40px;
+  text-align: center;
 }
